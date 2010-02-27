@@ -11,7 +11,7 @@
 <h3><?php echo $this->searchQuery;?></h3>
 <hr/>
 <ul id="search-results">
-    <?php foreach ($this->obiecte as $obiect): ?>
+    <?php foreach ($this->paginator as $obiect): ?>
         <li>
             <h3>
                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $obiect->ObiectNume->nume ?></a>
@@ -22,4 +22,10 @@
         </li>
     <?php endforeach; ?>
 </ul>
+
+<?php
+    if ($this->paginator instanceof Zend_Paginator) {
+    	echo $this->paginator;
+    }
+?>
 

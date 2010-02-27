@@ -27,7 +27,7 @@ class CautaController extends Zend_Controller_Action
 			$listaLocalitati[] = $localitate->id;	
 	    }
 		if (count($localitati)==0) {
-			if ((int)Zend_Auth::getInstance()->getIdentity()->Localitate->id>0){
+			if (Zend_Auth::getInstance()->hasIdentity()) {
 				$listaLocalitati[] = Zend_Auth::getInstance()->getIdentity()->Localitate->id;
 			}
 			
@@ -50,15 +50,12 @@ class CautaController extends Zend_Controller_Action
 	}
     public function indexAction()
     {
-		
 		 
 		$perPage = 10;
 		$searchQuery = $this->getRequest()->getParam('q');
 		$pageNumber = (int)$this->getRequest()->getParam('page');
 		$words = preg_split('/(\s)/', $searchQuery);
 		
-
-
 		$listaLocalitati = $this->_parseLocalitate($words);
 		
 		$ListaObiecte = $this->_cautaObiecteFullText($searchQuery);
@@ -69,16 +66,15 @@ class CautaController extends Zend_Controller_Action
 			
 			$q->andWhere('o.localitate in ("'.implode('","',$listaLocalitati).'")');
 		}
-		$obiecte = $q->execute();
+		$obiecte = $q;
 		
-		echo $q->getSqlQuery();
+	    $this->view->searchQuery = $searchQuery;
 		
-		$this->view->searchQuery = $searchQuery;
-		$this->view->obiecte = $obiecte;
+		$this->view->paginator = new Zend_Paginator(
+			new Gasestema_Paginator_Adapter($obiecte));
 
-		
+		$this->view->paginator->setCurrentPageNumber($pageNumber)
+		    ->setItemCountPerPage($perPage);
 	}
-
-
 }
 
