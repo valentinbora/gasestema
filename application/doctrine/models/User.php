@@ -28,5 +28,11 @@ class User extends BaseUser
         );
 
         $result = $auth->authenticate($authAdapter);
+        
+        if (!$result->isValid()) {
+            throw new Exception('The email and/or password you entered are incorrect.');
+        }
+        
+        return true;
     }
 }

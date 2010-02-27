@@ -21,7 +21,11 @@ class UserController extends Zend_Controller_Action
             if ($form->isValid($this->getRequest()->getPost())) {
                 $values = $form->getValues();
                 
-                User::login($values['email'], $values['password']);
+                try {
+                    User::login($values['email'], $values['password']);
+                } catch (Exception $e) {
+                    $this->message = $this->view->translate($e->getMessage());
+                }
             }
         }
         
@@ -30,7 +34,8 @@ class UserController extends Zend_Controller_Action
 
     public function logoutAction()
     {
-        // action body
+        Zend_Auth::getInstance()->clearIdentity();
+        $this->_redirect('/');
     }
 
     public function registerAction()

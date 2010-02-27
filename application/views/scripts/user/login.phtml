@@ -1,3 +1,7 @@
 <?php
-    echo $this->form->render();
+    $this->form->getElement('email')->render();
 ?>
+
+<?php if (isset($this->message)): ?>
+    <div class="message"><?php echo $this->message; ?></div>
+<?php endif; ?>

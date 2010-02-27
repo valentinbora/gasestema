@@ -4,6 +4,8 @@ class Gasestema_Form_User_Login extends Zend_Form
 {
     public function init()
     {
+        $this->setAttrib('id', 'login');
+        
         $email = $this->createElement('text', 'email')
             ->setLabel('Email')
             ->setRequired(true)
