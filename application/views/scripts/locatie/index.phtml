@@ -13,3 +13,16 @@
         <?php echo $this->translate("Contact:") ?> <?php echo $this->locatie->contact ?>
     </div>
 </div>
+
+<ul id="location-producs">
+    <?php foreach ($this->obiecte as $obiect): ?>
+        <li>
+            <span class="name">
+                <?php echo $obiect->ObiectNume->nume ?>
+            </span> ----
+            <span class="description">
+                <?php echo $obiect->descriere ?>
+            </span>
+        </li>
+    <?php endforeach; ?>
+</ul>

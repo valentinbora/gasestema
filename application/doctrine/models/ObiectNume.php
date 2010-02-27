@@ -12,5 +12,10 @@
  */
 class ObiectNume extends BaseObiectNume
 {
-
+    public function setUp()
+    {
+        $this->hasOne('Obiect', array(
+             'local' => 'id',
+             'foreign' => 'nume'));
+    }
 }

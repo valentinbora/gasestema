@@ -4,6 +4,20 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 
 -- -----------------------------------------------------
+-- Table `localitate`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `localitate` ;
+
+CREATE  TABLE IF NOT EXISTS `localitate` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `name` MEDIUMTEXT NULL ,
+  `lat` DOUBLE NULL DEFAULT 45 ,
+  `long` DOUBLE NULL DEFAULT 23 ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
@@ -18,21 +32,13 @@ CREATE  TABLE IF NOT EXISTS `user` (
   `active` TINYINT(1) NOT NULL DEFAULT 0 ,
   `localitate` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `email` (`email`(50) ASC) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `localitate`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `localitate` ;
-
-CREATE  TABLE IF NOT EXISTS `localitate` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `name` MEDIUMTEXT NULL ,
-  `lat` DOUBLE NULL DEFAULT 45 ,
-  `long` DOUBLE NULL DEFAULT 23 ,
-  PRIMARY KEY (`id`) )
+  UNIQUE INDEX `email` (`email`(50) ASC) ,
+  INDEX `fk_user_localitate1` (`localitate` ASC) ,
+  CONSTRAINT `fk_user_localitate1`
+    FOREIGN KEY (`localitate` )
+    REFERENCES `localitate` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -75,6 +81,7 @@ CREATE  TABLE IF NOT EXISTS `obiect` (
   `locatie` INT UNSIGNED NOT NULL ,
   `user` INT UNSIGNED NOT NULL ,
   `adaugat` INT UNSIGNED NULL ,
+  `descriere` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_obiect_localitate1` (`localitate` ASC) ,
   INDEX `fk_obiect_locatie1` (`locatie` ASC) ,
@@ -154,22 +161,22 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `user`
--- -----------------------------------------------------
-SET AUTOCOMMIT=0;
-USE `gasestema`;
-insert into `gasestema`.`user` (`id`, `email`, `password`, `realname`, `registered`, `token`, `active`, `localitate`) values (1, 'contact@valentinbora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Valentin B', NULL, NULL, 1, 1);
-insert into `gasestema`.`user` (`id`, `email`, `password`, `realname`, `registered`, `token`, `active`, `localitate`) values (2, 'mihai.oaida@gmail.com', 'pm0bc1be59e8c035d4e466aabda5cbcee18507bfa4', 'Mihai O', NULL, NULL, 1, 2);
-
-COMMIT;
-
--- -----------------------------------------------------
 -- Data for table `localitate`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`localitate` (`id`, `name`, `lat`, `long`) values (1, 'timisoara', NULL, NULL);
+insert into `gasestema`.`localitate` (`id`, `name`, `lat`, `long`) values (1, 'timisoara', 45.7494399999999999, 21.2272199999999991);
 insert into `gasestema`.`localitate` (`id`, `name`, `lat`, `long`) values (2, 'bucuresti', NULL, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `user`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+USE `gasestema`;
+insert into `gasestema`.`user` (`id`, `email`, `password`, `realname`, `registered`, `token`, `active`, `localitate`) values (1, 'contact@valentinbora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Valentin B', 1267289919, NULL, 1, 1);
+insert into `gasestema`.`user` (`id`, `email`, `password`, `realname`, `registered`, `token`, `active`, `localitate`) values (2, 'mihai.oaida@gmail.com', 'pm0bc1be59e8c035d4e466aabda5cbcee18507bfa4', 'Mihai O', 1267289919, NULL, 1, 2);
 
 COMMIT;
 
@@ -178,7 +185,7 @@ COMMIT;
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`locatie` (`id`, `nume`, `localitate`, `adresa`, `link`, `lat`, `long`, `contact`, `descriere`, `orar`, `logo`) values (1, 'tequila', 1, 'aleea studentilor nr 1', 'clubtequila.ro', NULL, NULL, NULL, 'club de dat cu bile si jucat biliard', '10-22', NULL);
+insert into `gasestema`.`locatie` (`id`, `nume`, `localitate`, `adresa`, `link`, `lat`, `long`, `contact`, `descriere`, `orar`, `logo`) values (1, 'tequila', 1, 'aleea studentilor nr 1', 'clubtequila.ro', NULL, NULL, '0741548443', 'club de dat cu bile si jucat biliard', '10-22', NULL);
 insert into `gasestema`.`locatie` (`id`, `nume`, `localitate`, `adresa`, `link`, `lat`, `long`, `contact`, `descriere`, `orar`, `logo`) values (2, '3f', 1, 'aleea studentilor nr 1', '3f.ro', NULL, NULL, NULL, 'food and drinks', '0-24', NULL);
 
 COMMIT;
@@ -188,8 +195,8 @@ COMMIT;
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (1, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (2, 2, 1, 2, 2, NULL);
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`, `descriere`) values (1, 1, 1, 1, 1, NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`, `descriere`) values (2, 2, 1, 2, 2, NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 COMMIT;
 

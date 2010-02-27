@@ -13,6 +13,7 @@ Doctrine_Manager::getInstance()->bindComponent('Obiect', 'doctrine');
  * @property integer $locatie
  * @property integer $user
  * @property integer $adaugat
+ * @property string $descriere
  * @property Localitate $Localitate
  * @property Locatie $Locatie
  * @property User $User
@@ -81,6 +82,14 @@ abstract class BaseObiect extends Doctrine_Record
              'length' => 4,
              'fixed' => false,
              'unsigned' => true,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('descriere', 'string', null, array(
+             'type' => 'string',
+             'fixed' => false,
+             'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,

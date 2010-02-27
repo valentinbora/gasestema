@@ -14,8 +14,16 @@ class LocatieController extends Zend_Controller_Action
         $id = explode("-", $locatie);
         $id = end($id);
         
-        $locatie = Doctrine_Core::getTable('Locatie')->findOneById($id);
+        $locatie = Doctrine_Core::getTable('Locatie')->findById($id);
+        
+        $obiecte = Doctrine_Query::create()
+            ->from('Obiect o')
+            ->where('o.locatie = ?', $id)
+            ->leftJoin('o.ObiectNume')
+            ->execute();
+            
         $this->view->locatie = $locatie;
+        $this->view->obiecte = $obiecte;
     }
 
     public function adaugaAction()

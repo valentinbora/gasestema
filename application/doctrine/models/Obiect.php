@@ -14,9 +14,8 @@ class Obiect extends BaseObiect
 {
     public function setUp()
     {
-        $this->actAs('Searchable', array(
-                'fields' => array('nume')
-            )
-        );
+        $this->hasOne('ObiectNume', array(
+             'local' => 'nume',
+             'foreign' => 'id'));
     }
 }
