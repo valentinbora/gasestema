@@ -86,8 +86,9 @@ abstract class BaseObiect extends Doctrine_Record
              'notnull' => false,
              'autoincrement' => false,
              ));
-        $this->hasColumn('descriere', 'string', null, array(
+        $this->hasColumn('descriere', 'string', 45, array(
              'type' => 'string',
+             'length' => 45,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,

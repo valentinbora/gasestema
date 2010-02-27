@@ -17,5 +17,7 @@ class Obiect extends BaseObiect
         $this->hasOne('ObiectNume', array(
              'local' => 'nume',
              'foreign' => 'id'));
+             
+        parent::setUp();
     }
 }

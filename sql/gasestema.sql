@@ -81,7 +81,7 @@ CREATE  TABLE IF NOT EXISTS `obiect` (
   `locatie` INT UNSIGNED NOT NULL ,
   `user` INT UNSIGNED NOT NULL ,
   `adaugat` INT UNSIGNED NULL ,
-  `descriere` VARCHAR(45) NULL ,
+  `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_obiect_localitate1` (`localitate` ASC) ,
   INDEX `fk_obiect_locatie1` (`locatie` ASC) ,
