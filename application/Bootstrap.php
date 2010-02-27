@@ -11,6 +11,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $autoloader->addResourceType('exception', 'exceptions', 'Exception');
         $autoloader->addResourceType('auth', 'auth', 'Auth');
+        $autoloader->addResourceType('paginator', 'paginator', 'Paginator');
         
         return $autoloader;
     }
