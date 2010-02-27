@@ -14,6 +14,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property integer $registered
  * @property string $token
  * @property integer $active
+ * @property Doctrine_Collection $Obiect
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -94,6 +95,8 @@ abstract class BaseUser extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasMany('Obiect', array(
+             'local' => 'id',
+             'foreign' => 'user'));
     }
 }
