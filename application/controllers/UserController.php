@@ -23,8 +23,9 @@ class UserController extends Zend_Controller_Action
                 
                 try {
                     User::login($values['email'], $values['password']);
+                    $this->_redirect('/');
                 } catch (Exception $e) {
-                    $this->message = $this->view->translate($e->getMessage());
+                    $this->view->message = $this->view->translate($e->getMessage());
                 }
             }
         }

@@ -19,6 +19,7 @@ class Gasestema_Form_User_Login extends Zend_Form
             ->setRequired(true)
             ->addFilter('StringTrim')
             ->addValidator('NotEmpty')
+            ->addValidator('EmailAddress')
             ->setDecorators(
                 array(
                     'Label',
