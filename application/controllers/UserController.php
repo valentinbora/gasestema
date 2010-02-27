@@ -17,6 +17,14 @@ class UserController extends Zend_Controller_Action
     {
         $form = new Gasestema_Form_User_Login;
         
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($this->getRequest()->getPost())) {
+                $values = $form->getValues();
+                
+                User::login($values['email'], $values['password']);
+            }
+        }
+        
         $this->view->form = $form;
     }
 

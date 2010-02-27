@@ -12,5 +12,21 @@
  */
 class User extends BaseUser
 {
+    /**
+     * Log in
+     *
+     * @param string $email 
+     * @param string $password 
+     * @return void
+     * @author Valentin Bora
+     */
+    public static function logIn($email, $password) {
+        $auth = Zend_Auth::getInstance();
+        $authAdapter = new Gasestema_Auth_Database(
+            $email,
+            sha1($password)
+        );
 
+        $result = $auth->authenticate($authAdapter);
+    }
 }
