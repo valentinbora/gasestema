@@ -1,5 +1,43 @@
 body {
 	font-family: "Myriad Pro", "Helvetica", "Calibri", "Arial", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+div.search {
+	-moz-border-radius: 15px;
+	width: 400px;
+	padding: 5px;
+	border: 2px solid #868686;
+	margin: 0 auto;
+	position: relative;
+	top: 40px;
+}
+
+#wrap {
+	width: 1024px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#user {
+	width: 150px;
+	height: 100px;
+	border: 1px solid #868686;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+input.search {
+	width: 100%;
+	font-size: 24px;
+	color: #868686;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	display: block;
+	position: relative;
 }
 
 div.bleau {

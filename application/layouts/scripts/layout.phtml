@@ -10,14 +10,20 @@
 ?>
 </head>
 <body>
-    <div id="user">
-        <?php if (!$this->user): ?>
-            <a href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a>
-        <?php else: ?>
-            <?php echo $this->translate("Hello, %1\$s", $this->user->realname) ?>
-        <?php endif; ?>
+    <div id="wrap">
+        <div class="header">
+            <div id="user">
+                <?php if (!$this->user): ?>
+                    <a href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a>
+                <?php else: ?>
+                    <?php echo $this->translate("Hello, %1\$s", $this->user->realname) ?><br/>
+                    <a href="<?php echo $this->baseUrl('/user/logout') ?>">Log out</a>
+                <?php endif; ?>
+            </div>
+        </div>
+        
+    	<?php echo $this->layout()->content; ?>
     </div>
-	<?php echo $this->layout()->content; ?>
 	
 <?php echo $this->headScript()
 	    ->prependFile($this->baseUrl('/js/main.js'))
