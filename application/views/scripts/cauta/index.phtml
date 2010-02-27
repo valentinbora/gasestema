@@ -1,1 +1,25 @@
-<br /><br /><center>View script for controller <b>Cauta</b> and script/action name <b>index</b></center>
+<?php 
+  $this->headLink()
+	    ->prependStylesheet($this->baseUrl('css/cautare.css'));
+		
+?>
+<?php 
+	echo $this->render('cauta/box_cauta.phtml');
+?>
+		
+		
+<h3><?php echo $this->searchQuery;?></h3>
+<hr/>
+<ul id="search-results">
+    <?php foreach ($this->obiecte as $obiect): ?>
+        <li>
+            <h3>
+               <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $obiect->ObiectNume->nume ?></a>
+            </h3>
+            <div class="description">
+                <?php echo $obiect->descriere ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
