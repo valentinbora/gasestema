@@ -1,6 +1,44 @@
-body {
+body,html{
 	font-family: "Myriad Pro", "Helvetica", "Calibri", "Arial", sans-serif;
+	margin:0px;
+	padding:0px;
 }
+
+/* login box */
+#login ul{
+	border:1px solid black;
+	padding:5px;
+	width:300px;
+	-moz-box-shadow: 0 0 2px 0 #444;
+	-moz-border-radius: 5px;
+
+}
+#login li{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	width:300px;
+}
+#login li{
+	line-height:1.5em;
+	
+}
+#submit{
+	float:none !important;
+	margin-left:115px;
+}
+
+#login li label{
+	float:left;
+	display:block;
+	width:80px;
+}
+#login li input{
+	float:right;
+}
+
+
+
 
 div.bleau {
 	position: fixed;
