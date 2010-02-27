@@ -1,6 +1,4 @@
-<?php echo $this->form->getElement('email')->render(); ?> <br/>
-<?php echo $this->form->getElement('password')->render(); ?> <br/>
-<?php echo $this->form->getElement('submit')->render(); ?> <br/>
+<?php echo $this->form->render(); ?>
 
 <?php if (isset($this->message)): ?>
     <div class="message"><?php echo $this->message; ?></div>
