@@ -13,6 +13,7 @@ Doctrine_Manager::getInstance()->bindComponent('Localitate', 'doctrine');
  * @property float $long
  * @property Doctrine_Collection $Locatie
  * @property Doctrine_Collection $Obiect
+ * @property Doctrine_Collection $User
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -68,6 +69,10 @@ abstract class BaseLocalitate extends Doctrine_Record
              'foreign' => 'localitate'));
 
         $this->hasMany('Obiect', array(
+             'local' => 'id',
+             'foreign' => 'localitate'));
+
+        $this->hasMany('User', array(
              'local' => 'id',
              'foreign' => 'localitate'));
     }

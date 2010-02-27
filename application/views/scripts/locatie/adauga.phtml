@@ -1,0 +1,47 @@
+<form action="<?php echo $this->baseUrl('/locatie/adauga') ?>" method="post">
+    <fieldset>
+        <legend><?php echo $this->translate("General") ?></legend>
+        <?php echo $this->form->getElement('name')->render() ?>
+        <br/>
+        <?php echo $this->translate("You are in") ?> <a href="#" class="localitate"><?php echo ucfirst($this->user->Localitate->name) ?></a>
+    </fieldset>
+    
+    <fieldset>
+        <legend><?php echo $this->translate("Localization") ?></legend>
+        <?php echo $this->form->getElement('address')->render() ?>
+        <br/>
+        
+        <?php echo $this->form->getElement('link')->render() ?>
+        <br/>
+        
+        <a href="#" class="map-trigger"><?php echo $this->translate('Point on the map?') ?></a><br/>
+        <div id="map"></div>
+        <?php echo $this->form->getElement('lat')->render() ?>
+        <?php echo $this->form->getElement('long')->render() ?>
+    </fieldset>
+    
+    <fieldset>
+        <legend><?php echo $this->translate("Information") ?></legend>
+        <?php echo $this->form->getElement('contact')->render() ?>
+        <br/>
+        
+        <?php echo $this->form->getElement('description')->render() ?>
+        <br/>
+        
+        <?php echo $this->form->getElement('schedule')->render() ?>
+        <br/>
+        
+        <?php echo $this->form->getElement('logo')->render() ?>
+        <br/>
+    </fieldset>
+    
+    <?php echo $this->form->getElement('submit')->render() ?>
+</form>
+
+<?php $this->headScript()
+->appendScript('var lat=' . $this->user->Localitate->lat . '; var long = ' . $this->user->Localitate->long . ';')
+    ->appendFile('http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAA-lYx-T3mkl9LSdThSrGqgRS3ftUSf5MieQdEflS8ZKtpZjkCEBTlIq9Z1XO7uW3FIOHHfDxmk1en1g"')
+    ->appendFile($this->baseUrl('js/locatie/add.js'));
+
+    $this->headLink()->appendStylesheet($this->baseUrl('/css/locatie.css'));
+?>

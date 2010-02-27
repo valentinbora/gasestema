@@ -9,7 +9,6 @@ Doctrine_Manager::getInstance()->bindComponent('ObiectNume', 'doctrine');
  * 
  * @property integer $id
  * @property string $nume
- * @property integer $obiect
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -35,16 +34,6 @@ abstract class BaseObiectNume extends Doctrine_Record
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('obiect', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => true,
-             'primary' => false,
-             'default' => '',
-             'notnull' => true,
              'autoincrement' => false,
              ));
     }

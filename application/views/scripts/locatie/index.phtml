@@ -1,1 +1,15 @@
-<br /><br /><center>View script for controller <b>Locatie</b> and script/action name <b>index</b></center>
+<h2><?php echo $this->locatie->nume ?></h2>
+
+<div id="location-data">
+    <div class="description">
+        <?php echo $this->locatie->descriere ?>
+    </div>
+    
+    <div class="schedule">
+        <?php echo $this->translate("Schedule:") ?> <?php echo $this->locatie->orar ?>
+    </div>
+    
+    <div class="contact">
+        <?php echo $this->translate("Contact:") ?> <?php echo $this->locatie->contact ?>
+    </div>
+</div>

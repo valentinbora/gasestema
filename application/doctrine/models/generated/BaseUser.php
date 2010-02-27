@@ -14,6 +14,8 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property integer $registered
  * @property string $token
  * @property integer $active
+ * @property integer $localitate
+ * @property Localitate $Localitate
  * @property Doctrine_Collection $Obiect
  * 
  * @package    ##PACKAGE##
@@ -90,11 +92,25 @@ abstract class BaseUser extends Doctrine_Record
              'notnull' => true,
              'autoincrement' => false,
              ));
+        $this->hasColumn('localitate', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
+             'fixed' => false,
+             'unsigned' => true,
+             'primary' => false,
+             'default' => '',
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Localitate', array(
+             'local' => 'localitate',
+             'foreign' => 'id'));
+
         $this->hasMany('Obiect', array(
              'local' => 'id',
              'foreign' => 'user'));
