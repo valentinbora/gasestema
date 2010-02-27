@@ -6,7 +6,13 @@ class Gasestema_Form_User_Login extends Zend_Form
     {
         $this->setAttrib('id', 'login');
         
-        $this->removeDecorator('DtDd');
+        $this->setDecorators(
+            array(
+                'FormElements',
+                array('HtmlTag', array('tag' => 'ul')),
+                'Form',
+            )
+        );
         
         $email = $this->createElement('text', 'email')
             ->setLabel('Email')
@@ -17,7 +23,8 @@ class Gasestema_Form_User_Login extends Zend_Form
                 array(
                     'Label',
                     'ViewHelper',
-                    'Errors'
+                    'Errors',
+                    array('HtmlTag', array('tag' => 'li'))
                 )
             );
             
@@ -30,7 +37,8 @@ class Gasestema_Form_User_Login extends Zend_Form
                 array(
                     'Label',
                     'ViewHelper',
-                    'Errors'
+                    'Errors',
+                    array('HtmlTag', array('tag' => 'li'))
                 )
             );;
             
@@ -39,9 +47,10 @@ class Gasestema_Form_User_Login extends Zend_Form
             ->setDecorators(
                 array(
                     'ViewHelper',
-                    'Errors'
+                    'Errors',
+                    array('HtmlTag', array('tag' => 'li'))
                 )
-            );;
+            );
         
         $this->addElements(array($email, $password, $submit));
     }
