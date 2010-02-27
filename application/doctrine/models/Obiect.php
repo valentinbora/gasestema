@@ -12,5 +12,11 @@
  */
 class Obiect extends BaseObiect
 {
-
+    public function setUp()
+    {
+        $this->actAs('Searchable', array(
+                'fields' => array('nume')
+            )
+        );
+    }
 }
