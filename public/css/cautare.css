@@ -2,5 +2,11 @@
 	list-style-type:none;
 }
 #search-results h3{
-	margin-bottom:0px;	
+	margin-bottom:0px;
+	font-size:1.1em;
+	font-weight:normal;	
+}
+#search-results li  em{
+	/*color:yellow;/*/
+	font-weight:bold;
 }

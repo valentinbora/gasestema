@@ -57,7 +57,7 @@ class CautaController extends Zend_Controller_Action
 		$pageNumber = (int)$this->getRequest()->getParam('page');
 		$words = preg_split('/(\s)/', $searchQuery);
 		
-
+		$this->view->searchWords = $words;
 
 		$listaLocalitati = $this->_parseLocalitate($words);
 		
@@ -71,7 +71,6 @@ class CautaController extends Zend_Controller_Action
 		}
 		$obiecte = $q->execute();
 		
-		echo $q->getSqlQuery();
 		
 		$this->view->searchQuery = $searchQuery;
 		$this->view->obiecte = $obiecte;

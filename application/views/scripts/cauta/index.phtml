@@ -14,7 +14,7 @@
     <?php foreach ($this->obiecte as $obiect): ?>
         <li>
             <h3>
-               <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $obiect->ObiectNume->nume ?></a>
+               <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $this->cautareHighlight($this->searchWords,$obiect->ObiectNume->nume); ?></a>
             </h3>
             <div class="description">
                 <?php echo $obiect->descriere ?>
