@@ -14,7 +14,7 @@ class LocatieController extends Zend_Controller_Action
         $id = explode("-", $locatie);
         $id = end($id);
         
-        $locatie = Doctrine_Core::getTable('Locatie')->findById($id);
+        $locatie = Doctrine_Core::getTable('Locatie')->findOneById($id);
         
         $obiecte = Doctrine_Query::create()
             ->from('Obiect o')

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-27 14:59+0200\n"
+"POT-Creation-Date: 2010-02-27 20:51+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,4 +12,82 @@ msgstr ""
 "X-Poedit-KeywordsList: translate;setLabel;setDescription;setMessage\n"
 "X-Poedit-Basepath: /Users/valentinbora/Work/web/gasestema/\n"
 "X-Poedit-SearchPath-0: application\n"
+
+#: application/forms/Locatie/Adauga.php:10
+msgid "Name"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:22
+msgid "Address"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:33
+msgid "Link"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:63
+msgid "Contact:"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:67
+#: application/forms/Locatie/Adauga.php:71
+msgid "Description:"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:75
+msgid "Logo:"
+msgstr ""
+
+#: application/forms/Locatie/Adauga.php:78
+msgid "Add"
+msgstr ""
+
+#: application/forms/User/Login.php:18
+msgid "Email"
+msgstr ""
+
+#: application/forms/User/Login.php:33
+msgid "Password"
+msgstr ""
+
+#: application/forms/User/Login.php:47
+msgid "Login"
+msgstr ""
+
+#: application/layouts/scripts/layout.phtml:19
+#, php-format
+msgid "Hello, %1$s"
+msgstr ""
+
+#: application/views/scripts/locatie/adauga.phtml:3
+msgid "General"
+msgstr ""
+
+#: application/views/scripts/locatie/adauga.phtml:6
+msgid "You are in"
+msgstr ""
+
+#: application/views/scripts/locatie/adauga.phtml:10
+msgid "Localization"
+msgstr ""
+
+#: application/views/scripts/locatie/adauga.phtml:17
+msgid "Point on the map?"
+msgstr ""
+
+#: application/views/scripts/locatie/adauga.phtml:24
+msgid "Information"
+msgstr ""
+
+#: application/views/scripts/locatie/index.phtml:9
+msgid "Schedule:"
+msgstr ""
+
+#: application/views/scripts/locatie/index.phtml:17
+msgid "Objects available in this location:"
+msgstr ""
+
+#: application/views/scripts/obiect/index.phtml:8
+msgid "Location"
+msgstr ""
 

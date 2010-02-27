@@ -14,14 +14,15 @@
     </div>
 </div>
 
+<h2><?php echo $this->translate("Objects available in this location:") ?></h2>
 <ul id="location-producs">
     <?php foreach ($this->obiecte as $obiect): ?>
         <li>
             <span class="name">
-                <?php echo $obiect->ObiectNume->nume ?>
-            </span> ----
+                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $obiect->ObiectNume->nume ?></a>
+            </span><br/>
             <span class="description">
-                <?php echo $obiect->descriere ?>
+                >> <?php echo $obiect->descriere ?>
             </span>
         </li>
     <?php endforeach; ?>
