@@ -1,0 +1,15 @@
+body {
+	font-family: "Myriad Pro", "Helvetica", "Calibri", "Arial", sans-serif;
+}
+
+div.bleau {
+	position: fixed;
+	width: 40px;
+	height: 20px;
+	padding: 10px;
+	text-align: center;
+	-moz-box-shadow: 0 0 5px 0 #444;
+	-moz-border-radius: 15px;
+	bottom: 10px;
+	right: 10px;
+}
