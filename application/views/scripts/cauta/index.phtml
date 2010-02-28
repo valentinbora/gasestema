@@ -6,9 +6,9 @@
 	<div id="results"> 
 	<?php echo $this->translate('Results'); ?>
 	
-	<?php echo ($this->pageNumber)*$this->perPage+1; ?>
+	<?php echo ($this->pageNumber-1)*$this->perPage+1; ?>
 	-
-	<?php echo ($this->pageNumber+1)*$this->perPage; ?>	
+	<?php echo ($this->pageNumber)*$this->perPage; ?>	
 	<?php echo $this->translate('from about'); ?>
 	<?php echo $this->paginator->getTotalItemCount(); ?>
 	</div>
@@ -49,7 +49,7 @@
 </ul>
 
 <?php
-    if ($this->paginator instanceof Zend_Paginator and $this->paginator->count()>$this->perPage) {
+    if ($this->paginator instanceof Zend_Paginator and $this->paginator->getTotalItemCount()>$this->perPage) {
     	echo $this->paginator;
     }
 ?>

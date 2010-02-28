@@ -138,7 +138,7 @@ class CautaController extends Zend_Controller_Action
 		}
 		$obiecte = $q;
 		
-		
+		if($pageNumber==0)$pageNumber=1;		
 		$this->view->searchWords = $words;
 	    $this->view->searchQuery = $searchQuery;
 		$this->view->listaRelevante = $listaNumeNormalizata; 
