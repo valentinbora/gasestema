@@ -1,0 +1,12 @@
+<h2><?php echo $this->obiect->ObiectNume->nume ?></h2>
+
+<div id="object-data">
+    <div class="description">
+        <?php echo $this->obiect->ObiectNume->descriere ?>
+    </div>
+    
+    <h3><?php echo $this->translate("Location") ?></h3>
+    <div class="location">
+        <a href="<?php echo $this->locationUrl($this->obiect->Locatie) ?>"><?php echo $this->obiect->Locatie->nume ?></a>, <?php echo $this->obiect->Locatie->adresa ?>
+    </div>
+</div>

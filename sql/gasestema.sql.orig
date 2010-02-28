@@ -144,11 +144,17 @@ CREATE  TABLE IF NOT EXISTS `obiect_nume` (
   `nume` TEXT NULL ,
   `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
+<<<<<<< HEAD:sql/gasestema.sql
+  FULLTEXT INDEX `nume` (`nume` ASC) ,
+  FULLTEXT INDEX `descr` (`descriere` ASC) )
+ENGINE = MyISAM;
+=======
   FULLTEXT INDEX `nume` (`nume` ASC),
   FULLTEXT INDEX `descriere` (`descriere` ASC) )
 ENGINE = MyISAM
 
 
+>>>>>>> 668783165368a6c540711729444a806fd14a9e26:sql/gasestema.sql
 
 
 
