@@ -16,6 +16,7 @@
             <h3>
                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $this->cautareHighlight($this->searchWords,$obiect->ObiectNume->nume); ?></a>
             </h3>
+			<div class="relavance" style="width:<?php echo $this->listaRelevante[$obiect->nume];?>px"> </div>
             <div class="description">
                 <?php echo $this->cautareHighlight($this->searchWords, $this->truncateString($obiect->ObiectNume->descriere,180)) ?>
             </div>
@@ -27,7 +28,7 @@
 			<?php endif?>
 			
 			<?php foreach ($obiect->TagObiect as $tag): ?>
-				<li><a href="#"><?php echo $this->cautareHighlight($this->searchWords,$tag->Tag->nume);?></a></li>
+				<li><a href="<?php echo $this->baseUrl('/cauta?q='.$tag->Tag->nume)?>"><?php echo $this->cautareHighlight($this->searchWords,$tag->Tag->nume);?></a></li>
 			<?php endforeach; ?>
 			
 			<?php if (count($obiect->TagObiect)):?>

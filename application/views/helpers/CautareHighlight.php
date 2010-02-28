@@ -7,7 +7,7 @@ class Zend_View_Helper_CautareHighlight extends Zend_View_Helper_Abstract
        
         foreach($words as $word){
         	$word = preg_quote($word);
-			$text = preg_replace("/\b($word)\b/i", '<em>\1</em>', $text);	
+			$text = preg_replace("/\b($word)/i", '<em>\1</em>', $text);	
         }
          
         return $text;
