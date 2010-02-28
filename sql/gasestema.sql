@@ -144,11 +144,36 @@ CREATE  TABLE IF NOT EXISTS `obiect_nume` (
   `nume` TEXT NULL ,
   `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
-  FULLTEXT INDEX `nume` (`nume` ASC),
-  FULLTEXT INDEX `descriere` (`descriere` ASC) )
-ENGINE = MyISAM
+  FULLTEXT INDEX `nume` (`nume` ASC) ,
+  FULLTEXT INDEX `descr` (`descriere` ASC) )
+ENGINE = MyISAM;
 
 
+-- -----------------------------------------------------
+-- Table `intrebare`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `intrebare` ;
+
+CREATE  TABLE IF NOT EXISTS `intrebare` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `question` TEXT NULL ,
+  `localitate` INT UNSIGNED NOT NULL ,
+  `user` INT UNSIGNED NOT NULL ,
+  `added` INT UNSIGNED NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_intrebare_localitate1` (`localitate` ASC) ,
+  INDEX `fk_intrebare_user1` (`user` ASC) ,
+  CONSTRAINT `fk_intrebare_localitate1`
+    FOREIGN KEY (`localitate` )
+    REFERENCES `localitate` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_intrebare_user1`
+    FOREIGN KEY (`user` )
+    REFERENCES `user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 
@@ -191,52 +216,8 @@ COMMIT;
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 1, 1, 1, 1, NULL);
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (NULL, 2, 1, 2, 2, NULL);
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (1, 1, 1, 1, 1, NULL);
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (2, 2, 1, 2, 2, NULL);
 
 COMMIT;
 

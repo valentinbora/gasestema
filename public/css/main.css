@@ -158,6 +158,7 @@ body.home #footer {
 .main #searchForm {
 	position: relative;
 	left: -20px;
+	margin-bottom: 30px;
 }
 
 .noresults {
@@ -233,4 +234,8 @@ legend {
 .insistent {
 	color: #B32323;
 	display: block;
+}
+
+.divider {
+	height: 30px;
 }

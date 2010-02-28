@@ -1,46 +1,66 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Gasestema\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-27 20:51+0200\n"
-"PO-Revision-Date: \n"
+"POT-Creation-Date: 2010-02-28 20:07+0200\n"
+"PO-Revision-Date: 2010-02-28 20:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: translate;setLabel;setDescription;setMessage\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;translate;setLabel;setValue;setDescription\n"
 "X-Poedit-Basepath: /Users/valentinbora/Work/web/gasestema/\n"
-"X-Poedit-SearchPath-0: application\n"
+"X-Poedit-SearchPath-0: application/controllers\n"
+"X-Poedit-SearchPath-1: application/models\n"
+"X-Poedit-SearchPath-2: application/forms\n"
+"X-Poedit-SearchPath-3: application/views\n"
+"X-Poedit-SearchPath-4: application/layouts\n"
 
-#: application/forms/Locatie/Adauga.php:10
+#: application/forms/Intrebare/Adauga.php:10
+msgid "Question"
+msgstr "Întrebare"
+
+#: application/forms/Intrebare/Adauga.php:15
+#: application/forms/Locatie/Adauga.php:16
+msgid "Location"
+msgstr "Locație"
+
+#: application/forms/Intrebare/Adauga.php:25
+msgid "Ask"
+msgstr "Întreabă"
+
+#: application/forms/Locatie/Adauga.php:11
 msgid "Name"
 msgstr "Nume"
 
-#: application/forms/Locatie/Adauga.php:22
+#: application/forms/Locatie/Adauga.php:26
 msgid "Address"
 msgstr "Adresa"
 
-#: application/forms/Locatie/Adauga.php:33
-msgid "Link"
-msgstr "Link"
+#: application/forms/Locatie/Adauga.php:30
+msgid "Web link"
+msgstr "Adresa web"
 
-#: application/forms/Locatie/Adauga.php:63
-msgid "Contact:"
-msgstr "Contact:"
+#: application/forms/Locatie/Adauga.php:40
+msgid "Contact info"
+msgstr "Informații contact"
 
-#: application/forms/Locatie/Adauga.php:67
-#: application/forms/Locatie/Adauga.php:71
-msgid "Description:"
-msgstr "Descriere:"
+#: application/forms/Locatie/Adauga.php:44
+msgid "Description"
+msgstr "Descriere"
 
-#: application/forms/Locatie/Adauga.php:75
+#: application/forms/Locatie/Adauga.php:48
+msgid "Schedule"
+msgstr "Orar"
+
+#: application/forms/Locatie/Adauga.php:52
 msgid "Logo:"
 msgstr "Logo:"
 
-#: application/forms/Locatie/Adauga.php:78
+#: application/forms/Locatie/Adauga.php:59
 msgid "Add"
-msgstr "Adauga"
+msgstr "Adaugă"
 
 #: application/forms/User/Login.php:18
 msgid "Email"
@@ -54,40 +74,138 @@ msgstr "Parola"
 msgid "Login"
 msgstr "Autentificare"
 
-#: application/layouts/scripts/layout.phtml:19
-#, php-format
-msgid "Hello, %1$s"
-msgstr "Ciao, %1\$s"
+#: application/views/scripts/footer.phtml:2
+msgid "About gaseste.ma"
+msgstr "Despre gaseste.ma"
 
-#: application/views/scripts/locatie/adauga.phtml:3
-msgid "General"
-msgstr "General"
+#: application/views/scripts/footer.phtml:3
+msgid "Help"
+msgstr "Ajutor"
 
-#: application/views/scripts/locatie/adauga.phtml:6
-msgid "You are in"
-msgstr "Esti in"
+#: application/views/scripts/footer.phtml:4
+msgid "Privacy policy"
+msgstr "Politica de confidențialitate"
 
-#: application/views/scripts/locatie/adauga.phtml:10
+#: application/views/scripts/cauta/box_cauta.phtml:3
+msgid "Please enter something to search for."
+msgstr "Te rog introdu ceva pentru a căuta."
+
+#: application/views/scripts/cauta/box_cauta.phtml:9
+msgid "Search here"
+msgstr "Caută aici"
+
+#: application/views/scripts/cauta/box_cauta.phtml:16
+msgid "You're searching only in"
+msgstr "Cauți doar în"
+
+#: application/views/scripts/cauta/box_cauta.phtml:20
+msgid "Search"
+msgstr "Căutare"
+
+#: application/views/scripts/cauta/index.phtml:5
+msgid "Results"
+msgstr "Rezultate"
+
+#: application/views/scripts/cauta/index.phtml:10
+msgid "from about"
+msgstr ""
+
+#: application/views/scripts/cauta/index.phtml:28
+msgid "Posted in "
+msgstr "Postat în"
+
+#: application/views/scripts/cauta/index.phtml:39
+msgid "Found in "
+msgstr "Găsit în"
+
+#: application/views/scripts/cauta/index.phtml:57
+msgid "Sorry, nothing found. Please insert coin and try again."
+msgstr "Nu am găsit nimic din păcate. Please insert coin and try again."
+
+#: application/views/scripts/cauta/index.phtml:59
+msgid "Ask the community where you could find this thing."
+msgstr "Întreabă comunitatea unde ai putea găsi așa ceva."
+
+#: application/views/scripts/intrebare/adauga.phtml:2
+msgid "Thanks for asking this question."
+msgstr "Mulțumim pentru întrebare."
+
+#: application/views/scripts/intrebare/adauga.phtml:7
+msgid "Ask a question"
+msgstr "Adresează o întrebare"
+
+#: application/views/scripts/intrebare/index.phtml:1
+msgid "Recent questions"
+msgstr "Întrebări recente"
+
+#: application/views/scripts/intrebare/index.phtml:8
+msgid "Question:"
+msgstr "Întrebare:"
+
+#: application/views/scripts/intrebare/index.phtml:13
+msgid "Asked by:"
+msgstr "Întrebat de:"
+
+#: application/views/scripts/intrebare/index.phtml:18
+msgid "Asked on:"
+msgstr "Întrebat la:"
+
+#: application/views/scripts/locatie/adauga.phtml:2
+msgid "Congratulations on adding this new location. Thanks."
+msgstr "Felicitări pentru adăugarea acestei noi locații. Mulțumim."
+
+#: application/views/scripts/locatie/adauga.phtml:7
+msgid "Add location"
+msgstr "Adaugă locație"
+
+#: application/views/scripts/locatie/adauga.phtml:14
 msgid "Localization"
 msgstr "Localizare"
 
-#: application/views/scripts/locatie/adauga.phtml:17
+#: application/views/scripts/locatie/adauga.phtml:27
 msgid "Point on the map?"
-msgstr "Ne arati pe harta?"
+msgstr "Pui pe hartă?"
 
-#: application/views/scripts/locatie/adauga.phtml:24
-msgid "Information"
-msgstr "Informatii"
+#: application/views/scripts/locatie/adauga.phtml:35
+msgid "We insist! Please add some form of location information."
+msgstr "Insistăm! Adaugă cel puțin una din cele trei informații despre locație."
+
+#: application/views/scripts/locatie/adauga.phtml:38
+msgid "You have to add at least one type of location: address, link or point on the map."
+msgstr "Trebuie să adaugi cel puțin o informație pentru locație: adresa, link, sau punct pe hartă."
+
+#: application/views/scripts/locatie/adauga.phtml:44
+msgid "Optional information"
+msgstr "Informații opționale"
 
 #: application/views/scripts/locatie/index.phtml:9
 msgid "Schedule:"
 msgstr "Orar:"
 
+#: application/views/scripts/locatie/index.phtml:13
+msgid "Contact:"
+msgstr "Contact"
+
 #: application/views/scripts/locatie/index.phtml:17
 msgid "Objects available in this location:"
-msgstr "Alte obiecte din aceeasi locatie:"
+msgstr "Obiecte disponibile în această locație:"
 
-#: application/views/scripts/obiect/index.phtml:8
-msgid "Location"
-msgstr "Locatie"
+#: application/views/scripts/user/miniprofile.phtml:17
+msgid "Log in"
+msgstr "Autentificare"
+
+#: application/views/scripts/user/miniprofile.phtml:21
+#, php-format
+msgid "Hello, %1$s"
+msgstr "Salut, %1$s"
+
+#: application/layouts/scripts/home.phtml:23
+#: application/layouts/scripts/layout.phtml:18
+msgid "Go to the home page"
+msgstr "Mergi la prima pagină"
+
+#: application/layouts/scripts/home.phtml:38
+#: application/layouts/scripts/layout.phtml:45
+msgid "Scrie ceva!"
+msgstr ""
 

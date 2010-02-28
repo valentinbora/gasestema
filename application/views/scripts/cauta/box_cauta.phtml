@@ -1,4 +1,3 @@
-	
 <form action="<?php echo $this->baseUrl('/cauta') ?>" method="get" id="searchForm">
     <div class="message">
         <?php echo $this->translate("Please enter something to search for.") ?>
@@ -11,8 +10,17 @@
 		}
 	?>
     <input type="text" name="q" id="searchInput" class="search" value="<?php echo $searchQuery;?>" title="<?php echo $searchQuery; ?>" />
+    <div class="limitSearch">
+        <input type="checkbox" name="limitSearch" id="limitSearch" value="1" checked="checked" />
+        <label for="limitSearch">
+            <?php echo $this->translate("You're searching only in") ?>
+            <?php echo ucfirst($this->user->Localitate->name) ?>
+        </label>
+    </div>
 	<input type="submit" id="searchSubmit" value="<?php echo $this->translate("Search")?>"/>
 </form>
+
+<div class="divider"></div>
 
 <?php  
 if ($this->searchQuery == ""){

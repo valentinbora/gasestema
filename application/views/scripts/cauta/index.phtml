@@ -1,5 +1,3 @@
-
-
 <?php if (count($this->paginator)): ?>
 
 <div id="informationBar">
@@ -56,8 +54,8 @@
 
 <?php else: ?>
     <div class="noresults">
-        <?php echo $this->translate("Sorry, nothing found. Please insert coin and try again.") ?>
+        <?php echo $this->translate("Sorry, nothing found. Please insert coin and try again.") ?><br/>
+        
+        <a href="<?php echo $this->baseUrl('/intrebare/adauga') ?>"><?php echo $this->translate("Ask the community where you could find this thing.") ?></a>
     </div>
 <?php endif; ?>
-
-

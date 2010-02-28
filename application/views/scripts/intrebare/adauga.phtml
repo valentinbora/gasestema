@@ -1,0 +1,27 @@
+<?php if (isset($this->success)) : ?>
+    <div class="success"><?php echo $this->translate("Thanks for asking this question.") ?></div>
+<?php else: ?>
+
+<form action="<?php echo $this->baseUrl('/intrebare/adauga') ?>" method="post" class="intrebare">
+    <fieldset>
+        <legend><?php echo $this->translate("Ask a question") ?></legend>
+        <table>
+            <tbody>
+                <?php echo $this->form->getElement('question')->render() ?> <br/>
+                
+                <?php echo $this->form->getElement('location')->render() ?>
+                
+                <tr>
+                    <td><?php echo $this->form->getElement('submit')->render() ?></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
+
+<?php endif; ?>
+
+<?php
+    $this->headLink()->appendStylesheet($this->baseUrl('/css/form.css'));
+?>

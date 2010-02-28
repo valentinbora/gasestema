@@ -1,0 +1,39 @@
+.content form {
+	font-size: 12px;
+}
+
+.content form label {
+	display: block;
+	padding-bottom: 3px;
+}
+
+.content form td {
+	vertical-align: top;
+	padding: 3px 0;
+}
+
+.content form input, .content form textarea {
+	border: 1px solid #BDC7D8;
+	margin-bottom: 5px;
+}
+
+.content form .untouched {
+	color: #8F8F8F;
+}
+
+.errors {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.errors li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	color: #B32323;
+}
+
+td.underline {
+	border-bottom: 1px solid #BDC7D8;
+}

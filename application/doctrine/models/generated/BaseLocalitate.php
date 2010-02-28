@@ -11,6 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('Localitate', 'doctrine');
  * @property string $name
  * @property float $lat
  * @property float $long
+ * @property Doctrine_Collection $Intrebare
  * @property Doctrine_Collection $Locatie
  * @property Doctrine_Collection $Obiect
  * @property Doctrine_Collection $User
@@ -64,6 +65,10 @@ abstract class BaseLocalitate extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Intrebare', array(
+             'local' => 'id',
+             'foreign' => 'localitate'));
+
         $this->hasMany('Locatie', array(
              'local' => 'id',
              'foreign' => 'localitate'));

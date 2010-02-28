@@ -1,0 +1,27 @@
+<h2><?php echo $this->translate("Recent questions") ?></h2>
+<ul>
+    <?php foreach ($this->intrebari as $index => $intrebare): ?>
+        <li>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><?php echo $this->translate("Question:") ?></td>
+                        <td><?php echo $intrebare->question ?></td>
+                    </tr>
+                
+                    <tr>
+                        <td><?php echo $this->translate("Asked by:") ?></td>
+                        <td><?php echo $intrebare->User->realname ?></td>
+                    </tr>
+                
+                    <tr>
+                        <td><?php echo $this->translate("Asked on:") ?></td>
+                        <td><?php echo date("d/m/y H:i:s", $intrebare->added) ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php $this->headLink()->appendStylesheet($this->baseUrl('/css/grid.css')) ?>

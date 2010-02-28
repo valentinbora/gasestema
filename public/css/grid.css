@@ -1,0 +1,21 @@
+.content {
+	font-size: 12px;
+}
+
+.content td {
+	vertical-align: top;
+	padding: 3px 0;
+}
+
+.content td:nth-child(2n+1) {
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.content td, .content td {
+	margin-bottom: 5px;
+}
+
+.content li {
+	margin-bottom: 10px;
+}

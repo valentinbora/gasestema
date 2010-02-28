@@ -17,7 +17,7 @@ $(function() {
 			$("#searchForm .message").css("display", "block")
 			setTimeout(function() {
 				$("#searchForm .message").fadeOut("slow");
-			}, 1000);
+			}, 2000);
 			
 			$("#searchInput").attr("value", "").focus();
 			return false;

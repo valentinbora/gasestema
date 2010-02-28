@@ -16,6 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @property integer $active
  * @property integer $localitate
  * @property Localitate $Localitate
+ * @property Doctrine_Collection $Intrebare
  * @property Doctrine_Collection $Obiect
  * 
  * @package    ##PACKAGE##
@@ -110,6 +111,10 @@ abstract class BaseUser extends Doctrine_Record
         $this->hasOne('Localitate', array(
              'local' => 'localitate',
              'foreign' => 'id'));
+
+        $this->hasMany('Intrebare', array(
+             'local' => 'id',
+             'foreign' => 'user'));
 
         $this->hasMany('Obiect', array(
              'local' => 'id',
