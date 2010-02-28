@@ -8,7 +8,16 @@
 	
 	<?php echo ($this->pageNumber-1)*$this->perPage+1; ?>
 	-
-	<?php echo ($this->pageNumber)*$this->perPage; ?>	
+	<?php 
+	$last = ($this->pageNumber)*$this->perPage; 
+	if ($last>$this->paginator->getTotalItemCount()){
+		echo $this->paginator->getTotalItemCount();
+	}else {
+		echo $last;	
+	}
+		
+	
+	?>	
 	<?php echo $this->translate('from about'); ?>
 	<?php echo $this->paginator->getTotalItemCount(); ?>
 	</div>

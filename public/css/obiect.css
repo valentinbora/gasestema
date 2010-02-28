@@ -1,0 +1,50 @@
+.obiect{
+	margin-top:30px;	
+}
+
+
+#map {
+	display: none;
+	width: 640px;
+	height: 480px;
+}
+
+.obiect {
+	font-size: 12px;
+}
+
+.obiect label {
+	display: block;
+	padding-bottom: 3px;
+}
+
+.obiect td {
+	vertical-align: top;
+	padding: 3px 0;
+}
+
+.obiect input, .obiect textarea {
+	border: 1px solid #BDC7D8;
+	margin-bottom: 5px;
+}
+
+.obiect .untouched {
+	color: #8F8F8F;
+}
+
+.errors {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.errors li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	color: #B32323;
+}
+
+td.underline {
+	border-bottom: 1px solid #BDC7D8;
+}

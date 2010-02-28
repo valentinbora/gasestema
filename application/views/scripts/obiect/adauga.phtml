@@ -1,0 +1,49 @@
+<form action="<?php echo $this->baseUrl('/obiect/adauga') ?>" method="post" class="obiect">
+    <fieldset>
+        <legend><?php echo $this->translate("Add object") ?></legend>
+        <table>
+            <tbody>
+                <?php echo $this->form->getElement('name')->render() ?>
+				<?php echo $this->form->getElement('tags')->render() ?>
+                
+				
+                <tr>
+                    <td colspan="2">
+                        
+                       
+                        <?php echo $this->translate("You are in") ?> <a href="#" class="localitate"><?php echo ucfirst($this->user->Localitate->name) ?></a>
+                    
+                    </td>
+                </tr>
+                <tr>
+                	<td>
+                		<?php echo $this->translate("Location") ?>
+                    <td>
+                        <input type="text" name="locatie" id="locatie" value="" />
+						<input type="hidden" name="locatie_id" value="" />
+                    </td>
+                </tr>                
+ 				<tr>
+                    <td colspan="2" class="underline">
+                        <?php if (isset($this->obiectError)): ?>
+                            <?php echo $this->translate("We insist! Please add information to the required fields.") ?>
+                        <?php endif; ?>
+                        
+                        <?php echo $this->translate("You have to give input at least for name and location.") ?>
+                    </td>
+                </tr>                
+                <tr>
+                    <td><?php echo $this->form->getElement('submit')->render() ?></td>
+                    <td><input type="hidden" name="locatie_id" id="locatie_id" value="" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </fieldset>
+</form>
+
+<?php $this->headScript()
+    ->appendFile($this->baseUrl('js/obiect/add.js'));
+
+    $this->headLink()->appendStylesheet($this->baseUrl('/css/obiect.css'));
+?>
