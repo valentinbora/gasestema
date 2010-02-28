@@ -41,12 +41,87 @@ class ObiectController extends Zend_Controller_Action
 	private function _processObiectAdd($form) {
         $values = $form->getValues();
         
-        
+        $name = $values["name"];
+		$descriere = $values["description"];
 		
-		print_r($values);
+		$locatie = $values["locatie"];
+		$rawLocatieId = $values["locatie_id"];
 		
+		$tagsRaw = split(",",$values["tags"]);
+
+		$localitateId = $this->view->user->Localitate->id;//oras
 		
+		$tags = array();
+		foreach($tagsRaw as $tag){
+			$tags[] = trim($tag);
+		}
+		$locatieId = $this->_verifyLocatie($rawLocatieId,$locatie);
+		$numeId = $this->_insertObiectNume($name,$descriere);
+		
+		$obiect = new Obiect;
+		$obiect->nume = $numeId;
+		$obiect->localitate = $localitateId;//oras
+		$obiect->locatie = $locatieId;
+		$obiect->user = $this->view->user->id;
+		$obiect->adaugat = time();
+		$obiect->save();
+		
+		$objectId = $obiect->id;
+		$this->_insertTags($objectId,$tags);
+				
     }
+	
+	private function _verifyLocatie($id,$name){
+		//verifi the location
+		return 2;
+	}
+	private function _insertObiectNume($nume,$descriere){
+		/* search for name and return id, if not insert and return id */
+		$result = Doctrine_Core::getTable('ObiectNume')->findOneByNumeAndDescriere($nume,$descriere);
+		if ($result->id){
+			return $result->id; 
+		}else {
+			$obiectNume = new ObiectNume;
+			$obiectNume->nume = $nume;
+			$obiectNume->descriere = $descriere;
+			$obiectNume->save();
+			
+			return $obiectNume->id;
+			
+		}
+		
+		
+	}
+	private function _insertTagObiect($obiectId,$tagId){
+		
+		$tagObiectObj = new TagObiect;
+		$tagObiectObj->obiect = $obiectId;
+		$tagObiectObj->tag = $tagId;
+		$tagObiectObj->save();
+		
+	}
+	private function _insertTags($objectId,$tags){
+		
+		/*
+		 * search for tags in Tags table then link them to tags_object
+		 */
+		$tagObj = Doctrine_Core::getTable('Tag');
+		
+		foreach($tags as $tag){
+			$result = $tagObj->findOneByNume($tag);
+			if ($result->id) {
+				$this->_insertTagObiect($objectId,$result->id);
+			}else {
+				$newTagObj = new Tag;
+				$newTagObj->nume = $tag;
+				$newTagObj->save();
+				
+				$this->_insertTagObiect($objectId,$newTagObj->id);
+			}
+		}
+		
+	}
+	
 
     public function __call($method, $params)
     {

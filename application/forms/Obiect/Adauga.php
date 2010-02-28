@@ -6,10 +6,16 @@ class Gasestema_Form_Obiect_Adauga extends Zend_Form
     {
         $this->setAttrib('id', 'adauga')
             ->setAttrib('enctype', 'multipart/form-data');
-        
+        $nameValidator  = new Zend_Validate_Callback(array('Gasestema_Form_Obiect_Adauga','verifyName'));
+		$nameValidator->setMessage('Name has to be unique');
         $name = $this->createElement('text', 'name')
             ->setLabel('Name')
+			->addValidator($nameValidator)
             ->setRequired(true)
+            ->addFilter('StringTrim');
+			
+        $description = $this->createElement('textarea', 'description')
+            ->setLabel('Description')
             ->addFilter('StringTrim');
 
         $tags = $this->createElement('text', 'tags')
@@ -32,7 +38,7 @@ class Gasestema_Form_Obiect_Adauga extends Zend_Form
                 )
             );			
             
-        $this->addElements(array($name, $tags,$locatie,$locatieId,$submit));
+        $this->addElements(array($name,$description, $tags,$locatie,$locatieId,$submit));
         
         $this->setElementDecorators(array(
             'ViewHelper',
@@ -40,6 +46,14 @@ class Gasestema_Form_Obiect_Adauga extends Zend_Form
             array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'element')),
             array('Label', array('tag' => 'td')),
             array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-        ), array('name', 'tags'));
+        ), array('name' ,'description','tags'));
     }
+	
+	public static function verifyName($name){
+
+		return !((bool)Doctrine_Core::getTable('ObiectNume')->findOneByNume($name));
+			
+	}
+		
+	
 }
