@@ -1,11 +1,18 @@
-<?php 
-  $this->headLink()
-	    ->prependStylesheet($this->baseUrl('css/cautare.css'));
-		
-?>		
+
 
 <?php if (count($this->paginator)): ?>
-    
+
+<div id="informationBar">
+	<div id="results"> 
+	<?php echo $this->translate('Results'); ?>
+	
+	<?php echo ($this->pageNumber-1)*$this->perPage+1; ?>
+	-
+	<?php echo ($this->pageNumber)*$this->perPage; ?>	
+	<?php echo $this->translate('from about'); ?>
+	<?php echo $this->paginator->getTotalItemCount(); ?>
+	</div>
+</div>  
 <ul id="search-results">
     <?php foreach ($this->paginator as $obiect): ?>
         <li>
@@ -30,15 +37,19 @@
 			<?php if (count($obiect->TagObiect)):?>
 				 </ul>
 			<?php endif ?>			
-			
-			
+			<div class="city">
+				<?php echo $this->translate('Found in ');?>
+				<a href="<?php echo $this->baseUrl('/cauta?q='.ucwords($obiect->Localitate->name))?>">	
+					<?php echo $this->cautareHighlight($this->searchWords,ucwords($obiect->Localitate->name));?>
+				</a>
+			</div>
 			
         </li>
     <?php endforeach; ?>
 </ul>
 
 <?php
-    if ($this->paginator instanceof Zend_Paginator) {
+    if ($this->paginator instanceof Zend_Paginator and $this->paginator->getTotalItemCount()>$this->perPage) {
     	echo $this->paginator;
     }
 ?>
@@ -48,3 +59,5 @@
         <?php echo $this->translate("Sorry, nothing found. Please insert coin and try again.") ?>
     </div>
 <?php endif; ?>
+
+
