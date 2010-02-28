@@ -6,6 +6,7 @@ class CautaController extends Zend_Controller_Action
 	private $searchType = "IN BOOLEAN MODE";
 	//private $searchType = "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION";
 	//private $searchType = "WITH QUERY EXPANSION";
+	private $perPage = 10;
 
     public function init()
     {
@@ -79,7 +80,6 @@ class CautaController extends Zend_Controller_Action
     public function indexAction()
     {
 		 
-		$perPage = 10;
 		$searchQuery = $this->getRequest()->getParam('q');
 		$pageNumber = (int)$this->getRequest()->getParam('page');
 		$words = preg_split('/(\s)/', $searchQuery);
@@ -125,9 +125,13 @@ class CautaController extends Zend_Controller_Action
 
 		}
 		asort($listaNume);
-		
+		#print_r($listaNume);
 		$listaIdNume = array_keys($listaNumeNormalizata);
-		$q = Doctrine_Query::create()->from('Obiect o')->where('o.nume in ("'.implode('","',$listaIdNume).'")');
+		$q = Doctrine_Query::create()
+				->from('Obiect o')
+				->where('o.nume in ("'.implode('","',$listaIdNume).'")')
+				->orderBy('FIELD(nume,"'.implode('","',$listaIdNume).'")');
+		#print $q->getSqlQuery();
 		if (count($listaLocalitati)>0){
 			
 			$q->andWhere('o.localitate in ("'.implode('","',$listaLocalitati).'")');
@@ -138,13 +142,13 @@ class CautaController extends Zend_Controller_Action
 		$this->view->searchWords = $words;
 	    $this->view->searchQuery = $searchQuery;
 		$this->view->listaRelevante = $listaNumeNormalizata; 
-		
-		
+		$this->view->perPage = $this->perPage;
+		$this->view->pageNumber = $pageNumber;
 		$this->view->paginator = new Zend_Paginator(
 			new Gasestema_Paginator_Adapter($obiecte));
 
 		$this->view->paginator->setCurrentPageNumber($pageNumber)
-		    ->setItemCountPerPage($perPage);
+		    ->setItemCountPerPage($this->perPage);
 	}
 }
 
