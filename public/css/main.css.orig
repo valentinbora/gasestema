@@ -94,6 +94,56 @@ input.search {
 
 
 
+<<<<<<< HEAD:public/css/main.css
+#searchForm {
+	width: 725px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1000;
+	margin-bottom: 50px;
+}
+
+#searchForm .message {
+	position: absolute;
+	top: 70px;
+	left: 25px;
+	font-size: 11px;
+	color: #AA0A0A;
+	display: none;
+}
+
+#searchSubmit {
+	display: block;
+	width: 110px;
+	height: 44px;
+	border: none;
+	outline: none;
+	font-size: 1px;
+	text-indent: -1500px;
+	overflow: hidden;
+	cursor: pointer;
+	float: right;
+	background: transparent url('../images/search-btn.jpg') no-repeat center center;
+}
+
+#search-results {
+	padding: 0;
+	margin: 0;
+	margin-top: 60px;
+}
+
+.paginationControl {
+	text-align: right;
+	font-size: 14px;
+	padding: 5px;
+}
+
+.logo {
+	position: relative;
+	left: 110px;
+}
+=======
+>>>>>>> 0183445bd319eff9553bbfc8feae079fa65f1155:public/css/main.css
 
 /* home specific */
 
@@ -228,9 +278,4 @@ legend {
 
 .location-submit:hover {
 	background-color: #FFFFE2;
-}
-
-.insistent {
-	color: #B32323;
-	display: block;
 }

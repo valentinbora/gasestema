@@ -1,3 +1,7 @@
+<?php if (isset($this->success)) : ?>
+    <div class="success"><?php echo $this->translate("Congratulations on adding this new location. Thanks.") ?></div>
+<?php else: ?>
+
 <form action="<?php echo $this->baseUrl('/locatie/adauga') ?>" method="post" class="locatie">
     <fieldset>
         <legend><?php echo $this->translate("Add location") ?></legend>
@@ -61,6 +65,8 @@
         <?php echo $this->form->getElement('long')->render() ?>
     </fieldset>
 </form>
+
+<?php endif; ?>
 
 <?php $this->headScript()
 ->appendScript('var lat=' . $this->user->Localitate->lat . '; var long = ' . $this->user->Localitate->long . ';')

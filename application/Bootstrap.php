@@ -26,7 +26,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $manager = Doctrine_Manager::getInstance();
         $manager->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
-
+        $manager->setAttribute(Doctrine::ATTR_QUOTE_IDENTIFIER, true);
         $manager->setAttribute(Doctrine::ATTR_AUTOLOAD_TABLE_CLASSES, true);
         
         Doctrine_Core::loadModels($doctrineConfig['models_path'] . '/generated');
