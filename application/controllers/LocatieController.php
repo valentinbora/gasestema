@@ -35,8 +35,13 @@ class LocatieController extends Zend_Controller_Action
         $form = new Gasestema_Form_Locatie_Adauga;
         
         if ($this->getRequest()->isPost()) {
+            $form->isValid($_POST);
+            
             if (!count($form->getErrorMessages($_POST))) {
                 $this->_processLocationAdd($form);
+            } else {
+                $values = $form->getValues();
+                $form->populate($values);
             }
         }
         
@@ -54,12 +59,19 @@ class LocatieController extends Zend_Controller_Action
      */
     private function _processLocationAdd($form) {
         $values = $form->getValues();
-        
+
         // Check for location info
         if (empty($values['address']) && empty($values['link']) && empty($values['lat'])) {
+            $form->populate($values);
             $this->view->locationError = 1;
             return;
         }
+        
+        Locatie::addNew($values);
+        
+        $this->view->success = 1;
+
+        // Logo not yet processed
     }
 
     public function __call($method, $params)

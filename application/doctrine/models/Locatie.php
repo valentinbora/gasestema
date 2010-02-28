@@ -12,4 +12,27 @@
  */
 class Locatie extends BaseLocatie
 {
+    public static function addNew($values)
+    {
+        $location = new Locatie;
+        $location->nume = $values['name'];
+
+        if (!empty($values['location'])) {
+            $localitate = Doctrine_Core::getTable('Localitate')->findOneByName(strtolower($values['location']));
+
+            if ($localitate) {
+                $location->localitate = $localitate;
+            }
+        }
+        
+        $location->adresa       = $values['address'];
+        $location->link         = $values['link'];
+        $location->lat          = $values['lat'];
+        $location->long         = $values['long'];
+        $location->contact      = $values['contact'];
+        $location->descriere    = $values['description'];
+        $location->orar         = $values['schedule'];
+        
+        $location->save();
+    }
 }
