@@ -22,7 +22,7 @@
                 <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $obiect->ObiectNume->nume ?></a>
             </span><br/>
             <span class="description">
-                >> <?php echo $obiect->descriere ?>
+                <?php echo $obiect->ObiectNume->descriere ?>
             </span>
         </li>
     <?php endforeach; ?>

@@ -32,6 +32,20 @@ class UserController extends Zend_Controller_Action
         
         $this->view->form = $form;
     }
+    
+    public function loginAjaxAction()
+    {
+        Zend_Layout::getMvcInstance()->disableLayout();
+        
+        try {
+            User::login($_POST['email'], $_POST['password']);
+            echo 1;
+        } catch (Exception $e) {
+            echo 0;
+        }
+        
+        die();
+    }
 
     public function logoutAction()
     {

@@ -2,12 +2,10 @@
   $this->headLink()
 	    ->prependStylesheet($this->baseUrl('css/cautare.css'));
 		
-?>
-<?php 
-	echo $this->render('cauta/box_cauta.phtml');
-?>
-		
-		
+?>		
+
+<?php if (count($this->paginator)): ?>
+    
 <ul id="search-results">
     <?php foreach ($this->paginator as $obiect): ?>
         <li>
@@ -15,8 +13,25 @@
                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $this->cautareHighlight($this->searchWords,$obiect->ObiectNume->nume); ?></a>
             </h3>
             <div class="description">
-                <?php echo $obiect->descriere ?>
+                <?php echo $this->cautareHighlight($this->searchWords, $this->truncateString($obiect->ObiectNume->descriere,180)) ?>
             </div>
+			
+			
+			<?php if (count($obiect->TagObiect)):?>
+			 <ul class="labels">
+				 <li class="first"><?php echo $this->translate('Posted in ');?></li>
+			<?php endif?>
+			
+			<?php foreach ($obiect->TagObiect as $tag): ?>
+				<li><a href="#"><?php echo $this->cautareHighlight($this->searchWords,$tag->Tag->nume);?></a></li>
+			<?php endforeach; ?>
+			
+			<?php if (count($obiect->TagObiect)):?>
+				 </ul>
+			<?php endif ?>			
+			
+			
+			
         </li>
     <?php endforeach; ?>
 </ul>
@@ -27,3 +42,8 @@
     }
 ?>
 
+<?php else: ?>
+    <div class="noresults">
+        <?php echo $this->translate("Sorry, nothing found. Please insert coin and try again.") ?>
+    </div>
+<?php endif; ?>

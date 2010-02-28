@@ -14,16 +14,15 @@
         <div class="header">
             <h1 class="logo"><a href="<?php echo $this->baseUrl() ?>" title="<?php echo $this->translate("Go to the home page") ?>"></a></h1>
             <div id="user">
-                <?php if (!$this->user): ?>
-                    <a href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a>
-                <?php else: ?>
-                    <?php echo $this->translate("Hello, %1\$s", $this->user->realname) ?><br/>
-                    <a href="<?php echo $this->baseUrl('/user/logout') ?>">Log out</a>
-                <?php endif; ?>
+                <?php echo $this->render('/user/miniprofile.phtml') ?>
             </div>
         </div>
         
         <div class="main">
+            <?php 
+            	echo $this->render('cauta/box_cauta.phtml');
+            ?>
+            
     	    <?php echo $this->layout()->content; ?>
     	</div>
     	
@@ -35,6 +34,7 @@
 	    ->prependFile($this->baseUrl('/js/jquery-1.4.2.min.js'))
 	    ->prependFile($this->baseUrl('/js/cufon/Omnes_500.font.js'))
         ->prependFile($this->baseUrl('/js/cufon/cufon.js'))
+        ->prependScript('var baseUrl = "' . $this->baseUrl() . '"')
 ?>
 <script type="text/javascript">
 	searchErrorMessage = "<?php echo $this->translate("Scrie ceva!")?>";

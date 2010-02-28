@@ -1,6 +1,22 @@
 <?php if (!$this->user): ?>
-    <a href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a> |
+    <a class="login" href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a> |
     <a href="<?php echo $this->baseUrl('/user/register') ?>">Sign up</a>
+    
+    <div class="login-dropdown">
+        <form action="<?php echo $this->baseUrl('/user/login') ?>" method="post">
+            <label for="email"><?php echo $this->translate("Email") ?></label>
+            <input type="text" name="email" class="email" />
+            
+            <label for="password"><?php echo $this->translate("Password") ?></label>
+            <input type="password" name="password" class="password" />
+            
+            <div class="message">
+                
+            </div>
+            
+            <input type="submit" class="login" value="<?php echo $this->translate('Log in') ?>" />
+        </form>
+    </div>
 <?php else: ?>
     <?php echo $this->translate("Hello, %1\$s", $this->user->realname) ?><br/>
     <a href="<?php echo $this->baseUrl('/user/logout') ?>">Log out</a>

@@ -35,19 +35,41 @@ class CautaController extends Zend_Controller_Action
 		return $listaLocalitati;
 	}
 	protected function _cautaObiecteFullText($searchQuery){
-		$q = Doctrine_Query::create()->select('o.id')
-	    ->from('ObiectNume o')->where('MATCH(nume) AGAINST ("'.stripslashes($searchQuery).'"IN BOOLEAN MODE)');
+		$where = 'MATCH(nume,descriere) AGAINST ("'.stripslashes($searchQuery).'"IN BOOLEAN MODE)';
+		$q = Doctrine_Query::create()->select('o.id,('.$where.') r')
+	    ->from('ObiectNume o')->where($where);
 		
 		$numeObiecte = $q->execute();
 		
 		$ListaObiecte = array();
 		foreach($numeObiecte as $numeObiect) {
-			 $ListaObiecte[]=$numeObiect->id;
+			// $ListaObiecte[]=array('id'=>$numeObiect->id,
+			// 					   'relevance'=>$numeObiect->r);
+			$ListaObiecte[] = $numeObiect->id;
 	    }
 		
 		return $ListaObiecte;	
 		
 	}
+	protected function _cautaTagsFullText($searchQuery){
+		$where = 'MATCH(nume) AGAINST("'.stripslashes($searchQuery).'"IN BOOLEAN MODE)';
+		$q = Doctrine_Query::create()->select('t.id,('.$where.') r')
+	    ->from('Tag t')->where($where);
+		
+		$tags = $q->execute();
+		//dd($tags->toArray());
+		$listaTags = array();
+		foreach($tags as $tag) {
+			 $listaTags[]=array('id'=>$tag->id,	
+			 					'relevance' =>$tag->r); 
+			 	
+			
+	    }
+		
+		return $listaTags;	
+		
+	}
+	
     public function indexAction()
     {
 		 
@@ -61,7 +83,9 @@ class CautaController extends Zend_Controller_Action
 		$listaLocalitati = $this->_parseLocalitate($words);
 		
 		$ListaObiecte = $this->_cautaObiecteFullText($searchQuery);
-		//($ListaObiecte);
+	
+		
+		//print_r($this->_cautaTagsFullText($searchQuery));
 		
 		$q = Doctrine_Query::create()->from('Obiect o')->where('o.nume in ("'.implode('","',$ListaObiecte).'")');
 		if (count($listaLocalitati)>0){
@@ -71,6 +95,7 @@ class CautaController extends Zend_Controller_Action
 		$obiecte = $q;
 		
 	    $this->view->searchQuery = $searchQuery;
+		
 		
 		$this->view->paginator = new Zend_Paginator(
 			new Gasestema_Paginator_Adapter($obiecte));
