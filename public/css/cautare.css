@@ -89,16 +89,7 @@
 	position: relative;
 	left: 110px;
 }
-
-
-.limitSearch {
-	font-size: 12px;
-	color: #525252;
-	position: absolute;
-	top: 72px;
-	left: 25px;
-}
-
-.limitSearch input {
-	width: 12px;
+.city{
+	font-size:0.85em;
+	margin-top:0.1em;
 }
