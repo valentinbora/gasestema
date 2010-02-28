@@ -36,7 +36,9 @@ abstract class BaseTagObiect extends Doctrine_Record
              'length' => 4,
              'fixed' => false,
              'unsigned' => true,
-             'primary' => true,
+             'primary' => false,
+             'default' => '',
+             'notnull' => true,
              'autoincrement' => false,
              ));
         $this->hasColumn('tag', 'integer', 4, array(
@@ -44,7 +46,9 @@ abstract class BaseTagObiect extends Doctrine_Record
              'length' => 4,
              'fixed' => false,
              'unsigned' => true,
-             'primary' => true,
+             'primary' => false,
+             'default' => '',
+             'notnull' => true,
              'autoincrement' => false,
              ));
     }

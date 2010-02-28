@@ -9,7 +9,6 @@ Doctrine_Manager::getInstance()->bindComponent('Tag', 'doctrine');
  * 
  * @property integer $id
  * @property string $nume
- * @property integer $obiect
  * @property Doctrine_Collection $TagObiect
  * 
  * @package    ##PACKAGE##
@@ -36,16 +35,6 @@ abstract class BaseTag extends Doctrine_Record
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('obiect', 'integer', 4, array(
-             'type' => 'integer',
-             'length' => 4,
-             'fixed' => false,
-             'unsigned' => true,
-             'primary' => false,
-             'default' => '',
-             'notnull' => true,
              'autoincrement' => false,
              ));
     }

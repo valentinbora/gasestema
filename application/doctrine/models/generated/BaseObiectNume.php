@@ -9,6 +9,7 @@ Doctrine_Manager::getInstance()->bindComponent('ObiectNume', 'doctrine');
  * 
  * @property integer $id
  * @property string $nume
+ * @property string $descriere
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -29,6 +30,14 @@ abstract class BaseObiectNume extends Doctrine_Record
              'autoincrement' => true,
              ));
         $this->hasColumn('nume', 'string', null, array(
+             'type' => 'string',
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('descriere', 'string', null, array(
              'type' => 'string',
              'fixed' => false,
              'unsigned' => false,
