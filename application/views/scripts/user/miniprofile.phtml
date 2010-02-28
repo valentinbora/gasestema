@@ -1,0 +1,7 @@
+<?php if (!$this->user): ?>
+    <a href="<?php echo $this->baseUrl('/user/login') ?>">Log in</a> |
+    <a href="<?php echo $this->baseUrl('/user/register') ?>">Sign up</a>
+<?php else: ?>
+    <?php echo $this->translate("Hello, %1\$s", $this->user->realname) ?><br/>
+    <a href="<?php echo $this->baseUrl('/user/logout') ?>">Log out</a>
+<?php endif; ?>

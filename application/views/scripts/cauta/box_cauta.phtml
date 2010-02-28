@@ -1,25 +1,20 @@
-<div id="content">
+<form action="<?php echo $this->baseUrl('/cauta') ?>" method="get" id="searchForm">
+    <div class="message">
+        <?php echo $this->translate("Please enter something to search for.") ?>
+    </div>
+	<?php 
+		if ($this->searchQuery!=""){
+			$searchQuery = $this->searchQuery; 
+		}else {
+			$searchQuery = $this->translate("Search here");
+		}
+	?>
+    <input type="text" name="q" id="searchInput" class="search" value="<?php echo $searchQuery;?>" title="<?php echo $searchQuery; ?>" />
+	<input type="submit" id="searchSubmit" value="<?php echo $this->translate("Search")?>"/>
+</form>
 
-	<div id="searchForm">
-		<form action="<?php echo $this->baseUrl('/cauta') ?>" method="get">
-			<div id="searchInput">
-				<?php 
-					if ($this->searchQuery!=""){
-						$searchQuery = $this->searchQuery; 
-					}else {
-						$searchQuery = $this->translate("Search here");
-					}
-				?>
-			    <input type="text" name="q" class="search" value="<?php echo $searchQuery;?>" title="<?php echo $searchQuery;?>" />
-			</div>
-			<input type="submit" id="searchSubmit" value="<?php echo $this->translate("Search")?>"/>
-		</form>
-	
-	</div>
-
-</div>
 <?php  
-if ($this->searchQuery==""){
+if ($this->searchQuery == ""){
 	$this->headScript()->prependFile($this->baseUrl('/js/cautare.js'));
 }
 ?>
