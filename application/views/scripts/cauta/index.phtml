@@ -17,8 +17,25 @@
                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $this->cautareHighlight($this->searchWords,$obiect->ObiectNume->nume); ?></a>
             </h3>
             <div class="description">
-                <?php echo $obiect->descriere ?>
+                <?php echo $this->cautareHighlight($this->searchWords, $this->truncateString($obiect->ObiectNume->descriere,180)) ?>
             </div>
+			
+			
+			<?php if (count($obiect->TagObiect)):?>
+			 <ul class="labels">
+				 <li class="first"><?php echo $this->translate('Posted in ');?></li>
+			<?php endif?>
+			
+			<?php foreach ($obiect->TagObiect as $tag): ?>
+				<li><a href="#"><?php echo $this->cautareHighlight($this->searchWords,$tag->Tag->nume);?></a></li>
+			<?php endforeach; ?>
+			
+			<?php if (count($obiect->TagObiect)):?>
+				 </ul>
+			<?php endif ?>			
+			
+			
+			
         </li>
     <?php endforeach; ?>
 </ul>

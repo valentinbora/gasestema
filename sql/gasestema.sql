@@ -144,8 +144,11 @@ CREATE  TABLE IF NOT EXISTS `obiect_nume` (
   `nume` TEXT NULL ,
   `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
-  FULLTEXT INDEX `nume` (`nume` ASC) )
-ENGINE = MyISAM;
+  FULLTEXT INDEX `nume` (`nume` ASC),
+  FULLTEXT INDEX `descriere` (`descriere` ASC) )
+ENGINE = MyISAM
+
+
 
 
 
