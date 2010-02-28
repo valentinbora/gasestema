@@ -81,7 +81,6 @@ CREATE  TABLE IF NOT EXISTS `obiect` (
   `locatie` INT UNSIGNED NOT NULL ,
   `user` INT UNSIGNED NOT NULL ,
   `adaugat` INT UNSIGNED NULL ,
-  `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_obiect_localitate1` (`localitate` ASC) ,
   INDEX `fk_obiect_locatie1` (`locatie` ASC) ,
@@ -112,7 +111,6 @@ DROP TABLE IF EXISTS `tag` ;
 CREATE  TABLE IF NOT EXISTS `tag` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nume` TINYTEXT NULL ,
-  `obiect` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM;
 
@@ -126,7 +124,7 @@ CREATE  TABLE IF NOT EXISTS `tag_obiect` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `obiect` INT UNSIGNED NOT NULL ,
   `tag` INT UNSIGNED NOT NULL ,
-  PRIMARY KEY (`id`, `tag`, `obiect`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_tag_obiect_obiect1` (`obiect` ASC) ,
   INDEX `fk_tag_obiect_tag1` (`tag` ASC) ,
   CONSTRAINT `fk_tag_obiect_obiect1`
@@ -150,6 +148,7 @@ DROP TABLE IF EXISTS `obiect_nume` ;
 CREATE  TABLE IF NOT EXISTS `obiect_nume` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nume` TEXT NULL ,
+  `descriere` TEXT NULL ,
   PRIMARY KEY (`id`) ,
   FULLTEXT INDEX `nume` (`nume` ASC) )
 ENGINE = MyISAM;
@@ -195,8 +194,8 @@ COMMIT;
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`, `descriere`) values (1, 1, 1, 1, 1, NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`, `descriere`) values (2, 2, 1, 2, 2, NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (1, 1, 1, 1, 1, NULL);
+insert into `gasestema`.`obiect` (`id`, `nume`, `localitate`, `locatie`, `user`, `adaugat`) values (2, 2, 1, 2, 2, NULL);
 
 COMMIT;
 
@@ -205,7 +204,7 @@ COMMIT;
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
 USE `gasestema`;
-insert into `gasestema`.`obiect_nume` (`id`, `nume`) values (1, 'paulaner');
-insert into `gasestema`.`obiect_nume` (`id`, `nume`) values (2, 'jacob');
+insert into `gasestema`.`obiect_nume` (`id`, `nume`, `descriere`) values (1, 'paulaner', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+insert into `gasestema`.`obiect_nume` (`id`, `nume`, `descriere`) values (2, 'jacob', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
 
 COMMIT;
