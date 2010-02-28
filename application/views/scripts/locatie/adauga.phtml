@@ -7,13 +7,11 @@
                 
                 <tr>
                     <td colspan="2">
-                        
-                        <h3><?php echo $this->translate("Localization") ?></h3>
-                    
-                        <?php echo $this->translate("You are in") ?> <a href="#" class="localitate"><?php echo ucfirst($this->user->Localitate->name) ?></a>
-                    
+                        <h3><?php echo $this->translate("Localization") ?></h3>            
                     </td>
                 </tr>
+                
+                <?php echo $this->form->getElement('location')->render() ?>
                 
                 <?php echo $this->form->getElement('address')->render() ?>
                 
@@ -30,7 +28,7 @@
                 <tr>
                     <td colspan="2" class="underline">
                         <?php if (isset($this->locationError)): ?>
-                            <?php echo $this->translate("We insist! Please add some form of location information.") ?>
+                            <span class="insistent"><?php echo $this->translate("We insist! Please add some form of location information.") ?></span>
                         <?php endif; ?>
                         
                         <?php echo $this->translate("You have to add at least one type of location: address, link or point on the map.") ?>

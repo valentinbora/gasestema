@@ -12,6 +12,16 @@ class Gasestema_Form_Locatie_Adauga extends Zend_Form
             ->setRequired(true)
             ->addFilter('StringTrim');
 
+        $location = $this->createElement('text', 'location')
+            ->setLabel('Location')
+            ->addFilter('StringTrim');
+            
+        $auth = Zend_Auth::getInstance();
+        if ($auth->hasIdentity()) {
+            $user = $auth->getIdentity();
+            $location->setValue(ucfirst($user->Localitate->name));
+        }
+            
         $address = $this->createElement('text', 'address')
             ->setLabel('Address')
             ->addFilter('StringTrim');
@@ -40,8 +50,10 @@ class Gasestema_Form_Locatie_Adauga extends Zend_Form
             
         $logo = $this->createElement('file', 'logo')
             ->setLabel('Logo:')
-            ->addFilter('Rename', '/tmp')
-            ->addValidator('Size', false, 102400);
+            ->setDestination(realpath(APPLICATION_PATH . '/../public/uploads'))
+            ->setValueDisabled(true)
+            ->setRequired(false)
+            ->setMaxFileSize(102400); // limits the filesize on the client side;
                     
         $submit = $this->createElement('submit', 'submit')
             ->setLabel('Add')
@@ -53,7 +65,7 @@ class Gasestema_Form_Locatie_Adauga extends Zend_Form
                 )
             );
         
-        $this->addElements(array($name, $address, $link, $lat, $long, $contact, $description, $schedule, $logo, $submit));
+        $this->addElements(array($name, $location, $address, $link, $lat, $long, $contact, $description, $schedule, $logo, $submit));
         
         $this->setElementDecorators(array(
             'ViewHelper',
@@ -61,6 +73,6 @@ class Gasestema_Form_Locatie_Adauga extends Zend_Form
             array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'element')),
             array('Label', array('tag' => 'td')),
             array(array('row' => 'HtmlTag'), array('tag' => 'tr')),
-        ), array('name', 'address', 'link', 'contact', 'description', 'schedule'));
+        ), array('name', 'location', 'address', 'link', 'contact', 'description', 'schedule'));
     }
 }
