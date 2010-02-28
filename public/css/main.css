@@ -78,11 +78,11 @@ input.search {
 	line-height:1.5em;
 	
 }
-#submit {
+/*#submit {
 	float:none !important;
 	margin-left:115px;
 }
-
+*/
 #login li label{
 	float:left;
 	display:block;
@@ -100,6 +100,7 @@ input.search {
 	margin: 0 auto;
 	position: relative;
 	z-index: 1000;
+	margin-bottom: 50px;
 }
 
 #searchForm .message {
@@ -219,10 +220,10 @@ body.home #footer {
 	padding: 10px;
 	padding-top: 40px;
 	position: relative;
-	top: -20px;
 	left: -7px;
 	-moz-box-shadow: 0 0 5px 0 #CCC;
 	display: none;
+	background: #FFF;
 }
 
 .login-dropdown label {
@@ -233,6 +234,46 @@ body.home #footer {
 	margin-bottom: 5px;
 }
 
+a.login {
+	
+	z-index: 4000;
+}
+
 a {
 	outline: none;
+}
+
+fieldset {
+	margin-bottom: 15px;
+}
+
+textarea {
+	width: 50%;
+	height: 80px;
+}
+
+fieldset {
+	border: 1px solid #E2E2E2;
+}
+
+legend {
+	display: block;
+	padding: 7px;
+	font-size: 18px;
+	background-color: #FFF;
+}
+
+.location-submit {
+	background: transparent url('../images/add_16.png') no-repeat 5px center;
+	margin: 0;
+	padding: 5px;
+	padding-left: 24px;
+	border: 1px solid black;
+	outline: none;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.location-submit:hover {
+	background-color: #FFFFE2;
 }

@@ -26,8 +26,6 @@ $application->bootstrap()
             ->run();
             
 function dd($stuff) {
-    $backtrace = debug_backtrace();
-    echo '<b>Breakpoint on:</b> ' . $backtrace[1]['function'] . ' <b>in file</b> ' . (isset($backtrace[1]['file']) ? $backtrace[1]['file'] : '') . ' <b>@ line</b> ' . (isset($backtrace[1]['line']) ? $backtrace[1]['line'] : '') . ':';
 	echo '<pre>';
 	if(is_array($stuff)) {
 		print_r($stuff);

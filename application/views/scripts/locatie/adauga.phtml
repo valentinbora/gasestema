@@ -1,41 +1,67 @@
-<form action="<?php echo $this->baseUrl('/locatie/adauga') ?>" method="post">
+<form action="<?php echo $this->baseUrl('/locatie/adauga') ?>" method="post" class="locatie">
     <fieldset>
-        <legend><?php echo $this->translate("General") ?></legend>
-        <?php echo $this->form->getElement('name')->render() ?>
-        <br/>
-        <?php echo $this->translate("You are in") ?> <a href="#" class="localitate"><?php echo ucfirst($this->user->Localitate->name) ?></a>
-    </fieldset>
-    
-    <fieldset>
-        <legend><?php echo $this->translate("Localization") ?></legend>
-        <?php echo $this->form->getElement('address')->render() ?>
-        <br/>
-        
-        <?php echo $this->form->getElement('link')->render() ?>
-        <br/>
-        
-        <a href="#" class="map-trigger"><?php echo $this->translate('Point on the map?') ?></a><br/>
-        <div id="map"></div>
+        <legend><?php echo $this->translate("Add location") ?></legend>
+        <table>
+            <tbody>
+                <?php echo $this->form->getElement('name')->render() ?> <br/>
+                
+                <tr>
+                    <td colspan="2">
+                        
+                        <h3><?php echo $this->translate("Localization") ?></h3>
+                    
+                        <?php echo $this->translate("You are in") ?> <a href="#" class="localitate"><?php echo ucfirst($this->user->Localitate->name) ?></a>
+                    
+                    </td>
+                </tr>
+                
+                <?php echo $this->form->getElement('address')->render() ?>
+                
+                <?php echo $this->form->getElement('link')->render() ?>
+                
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="#" class="map-trigger"><?php echo $this->translate('Point on the map?') ?></a><br/>
+                        <div id="map"></div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" class="underline">
+                        <?php if (isset($this->locationError)): ?>
+                            <?php echo $this->translate("We insist! Please add some form of location information.") ?>
+                        <?php endif; ?>
+                        
+                        <?php echo $this->translate("You have to add at least one type of location: address, link or point on the map.") ?>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2'">
+                        <h3><?php echo $this->translate("Optional information") ?></h3>
+                    </td>
+                </tr>
+                
+                <?php echo $this->form->getElement('contact')->render() ?>
+                <?php echo $this->form->getElement('description')->render() ?>
+                <?php echo $this->form->getElement('schedule')->render() ?>
+                
+                <tr>
+                    <td><?php echo $this->translate("Logo:") ?> </td>
+                    <td><input type="file" id="logo" name="logo" /></td>
+                </tr>
+                
+                <tr>
+                    <td><?php echo $this->form->getElement('submit')->render() ?></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
         <?php echo $this->form->getElement('lat')->render() ?>
         <?php echo $this->form->getElement('long')->render() ?>
     </fieldset>
-    
-    <fieldset>
-        <legend><?php echo $this->translate("Information") ?></legend>
-        <?php echo $this->form->getElement('contact')->render() ?>
-        <br/>
-        
-        <?php echo $this->form->getElement('description')->render() ?>
-        <br/>
-        
-        <?php echo $this->form->getElement('schedule')->render() ?>
-        <br/>
-        
-        <?php echo $this->form->getElement('logo')->render() ?>
-        <br/>
-    </fieldset>
-    
-    <?php echo $this->form->getElement('submit')->render() ?>
 </form>
 
 <?php $this->headScript()

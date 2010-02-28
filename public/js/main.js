@@ -1,4 +1,4 @@
-Cufon('h2, h3', {hover:'true'});
+Cufon('h2, h3, .locatie label, legend', {hover:'true'});
 
 $(function(){
 	$("a.login").click(function(){
