@@ -12,5 +12,16 @@
  */
 class TagObiect extends BaseTagObiect
 {
-
+    public function setUp()
+    {
+        $this->hasOne('Obiect', array(
+             'local' => 'obiect',
+             'foreign' => 'id'));
+             
+        $this->hasOne('Tag', array(
+              'local' => 'tag',
+              'foreign' => 'id'));
+        
+        parent::setUp();
+    }
 }

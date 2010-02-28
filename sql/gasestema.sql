@@ -126,15 +126,9 @@ CREATE  TABLE IF NOT EXISTS `tag_obiect` (
   `tag` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_tag_obiect_obiect1` (`obiect` ASC) ,
-  INDEX `fk_tag_obiect_tag1` (`tag` ASC) ,
   CONSTRAINT `fk_tag_obiect_obiect1`
     FOREIGN KEY (`obiect` )
     REFERENCES `obiect` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tag_obiect_tag1`
-    FOREIGN KEY (`tag` )
-    REFERENCES `tag` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

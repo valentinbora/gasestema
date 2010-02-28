@@ -12,5 +12,12 @@
  */
 class Tag extends BaseTag
 {
-
+    public function setUp()
+    {
+        $this->hasMany('TagObiect', array(
+              'local' => 'id',
+              'foreign' => 'tag'));
+        
+        parent::setUp();
+    }
 }

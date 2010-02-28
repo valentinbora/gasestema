@@ -9,7 +9,6 @@ Doctrine_Manager::getInstance()->bindComponent('Tag', 'doctrine');
  * 
  * @property integer $id
  * @property string $nume
- * @property Doctrine_Collection $TagObiect
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -42,8 +41,6 @@ abstract class BaseTag extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('TagObiect', array(
-             'local' => 'id',
-             'foreign' => 'tag'));
+        
     }
 }

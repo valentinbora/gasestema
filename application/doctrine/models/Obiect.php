@@ -18,6 +18,10 @@ class Obiect extends BaseObiect
              'local' => 'nume',
              'foreign' => 'id'));
              
+         $this->hasMany('TagObiect', array(
+               'local' => 'id',
+               'foreign' => 'obiect'));
+             
         parent::setUp();
     }
 }
