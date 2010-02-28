@@ -1,27 +1,26 @@
-$(document).ready(function(){
-
-	$('#searchInput input').click(function(){
-		if ( $(this).attr("value")==$(this).attr("title" ) ){
+$(function() {
+	$('#searchInput').click(function(){
+		if ( $(this).attr("value") == $(this).attr("title")) {
 			$(this).attr("value","");	
 		}
 	})
-	$('#searchInput input').blur(function(){
-		if ( $(this).attr("value").trim()=="" ){
+	
+	$('#searchInput').blur(function(){
+		if ( $(this).attr("value").trim() == "" ) {
 			$(this).attr("value",$(this).attr("title"));	
 		}
 	})
 	
-	$('#searchForm form').submit(function(){
-		searchInput = $('#searchInput input')
+	$('#searchForm').submit(function() {
+		searchInput = $('#searchInput')
 		if ( searchInput.attr("value") == searchInput.attr("title" ) ||  searchInput.attr("value") =="") {
-			alert(searchErrorMessage)
+			$("#searchForm .message").css("display", "block")
+			setTimeout(function() {
+				$("#searchForm .message").fadeOut("slow");
+			}, 1000);
+			
+			$("#searchInput").attr("value", "").focus();
 			return false;
 		}
-
 	})
-	
-	
-	
-
-
 });

@@ -7,6 +7,7 @@ class IndexController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $this->view->user = Zend_Auth::getInstance()->getIdentity();
+        Zend_Layout::getMvcInstance()->setLayout('home');
     }
 
     public function indexAction()

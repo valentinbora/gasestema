@@ -2,14 +2,10 @@
   $this->headLink()
 	    ->prependStylesheet($this->baseUrl('css/cautare.css'));
 		
-?>
-<?php 
-	echo $this->render('cauta/box_cauta.phtml');
-?>
-		
-		
-<h3><?php echo $this->searchQuery;?></h3>
-<hr/>
+?>		
+
+<?php if (count($this->paginator)): ?>
+    
 <ul id="search-results">
     <?php foreach ($this->paginator as $obiect): ?>
         <li>
@@ -47,3 +43,8 @@
     }
 ?>
 
+<?php else: ?>
+    <div class="noresults">
+        <?php echo $this->translate("Sorry, nothing found. Please insert coin and try again.") ?>
+    </div>
+<?php endif; ?>
