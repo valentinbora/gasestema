@@ -30,6 +30,10 @@
         <controllerFile controllerName="Obiect">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Intrebare">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="adauga"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory enabled="false"/>
@@ -70,6 +74,12 @@
           <viewControllerScriptsDirectory forControllerName="Obiect">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Intrebare">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Intrebare">
+            <viewScriptFile forActionName="adauga"/>
+          </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
@@ -101,6 +111,7 @@
       <testApplicationDirectory>
         <testApplicationBootstrapFile/>
         <testApplicationControllerDirectory>
+          <testApplicationControllerFile/>
           <testApplicationControllerFile/>
           <testApplicationControllerFile/>
           <testApplicationControllerFile/>

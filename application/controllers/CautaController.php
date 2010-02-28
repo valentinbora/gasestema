@@ -130,7 +130,7 @@ class CautaController extends Zend_Controller_Action
 		$q = Doctrine_Query::create()
 				->from('Obiect o')
 				->where('o.nume in ("'.implode('","',$listaIdNume).'")')
-				->orderBy('FIELD(nume,"'.implode('","',$listaIdNume).'")');
+				->orderBy('FIELD(nume,"'.implode('","',$listaIdNume).'") DESC');
 		#print $q->getSqlQuery();
 		if (count($listaLocalitati)>0){
 			

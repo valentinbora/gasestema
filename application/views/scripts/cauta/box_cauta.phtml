@@ -10,6 +10,7 @@
 		}
 	?>
     <input type="text" name="q" id="searchInput" class="search" value="<?php echo $searchQuery;?>" title="<?php echo $searchQuery; ?>" />
+    <?php if ($this->user): ?>
     <div class="limitSearch">
         <input type="checkbox" name="limitSearch" id="limitSearch" value="1" checked="checked" />
         <label for="limitSearch">
@@ -17,6 +18,7 @@
             <?php echo ucfirst($this->user->Localitate->name) ?>
         </label>
     </div>
+    <?php endif; ?>
 	<input type="submit" id="searchSubmit" value="<?php echo $this->translate("Search")?>"/>
 </form>
 

@@ -78,7 +78,7 @@ class ObiectController extends Zend_Controller_Action
 	private function _insertObiectNume($nume,$descriere){
 		/* search for name and return id, if not insert and return id */
 		$result = Doctrine_Core::getTable('ObiectNume')->findOneByNumeAndDescriere($nume,$descriere);
-		if ($result->id){
+		if ($result){
 			return $result->id; 
 		}else {
 			$obiectNume = new ObiectNume;
