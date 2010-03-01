@@ -7,7 +7,7 @@ class Gasestema_Form_Obiect_Adauga extends Zend_Form
         $this->setAttrib('id', 'adauga')
             ->setAttrib('enctype', 'multipart/form-data');
         $nameValidator  = new Zend_Validate_Callback(array('Gasestema_Form_Obiect_Adauga','verifyName'));
-		$nameValidator->setMessage('Name has to be unique');
+		$nameValidator->setMessage('Name has to be unique. Try something more specific.');
         $name = $this->createElement('text', 'name')
             ->setLabel('Name')
 			->addValidator($nameValidator)

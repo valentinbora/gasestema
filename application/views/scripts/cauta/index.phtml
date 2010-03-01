@@ -26,7 +26,7 @@
             <h3>
                <a href="<?php echo $this->objectUrl($obiect) ?>"><?php echo $this->cautareHighlight($this->searchWords,$obiect->ObiectNume->nume); ?></a>
             </h3>
-			<div class="relavance" style="width:<?php echo $this->listaRelevante[$obiect->nume];?>px"> </div>
+			<div class="relavance" title="<?php echo $this->listaRelevante[$obiect->nume]."% ".$this->translate('relevant');?>" style="width:<?php echo $this->listaRelevante[$obiect->nume];?>px"> </div>
             <div class="description">
                 <?php echo $this->cautareHighlight($this->searchWords, $this->truncateString($obiect->ObiectNume->descriere,180)) ?>
             </div>
