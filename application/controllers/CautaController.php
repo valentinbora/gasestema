@@ -79,7 +79,7 @@ class CautaController extends Zend_Controller_Action {
     }
     
     public function indexAction() {
-    	
+		//http://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024    	
         $diacriticeRaw=array("\xc4\x82","\xc4\x83","\xc3\x82","\xc3\xa2","\xc3\x8e","\xc3\xae","\xc8\x98","\xc8\x99","\xc8\x9a","\xc8\x9b");
 		$diacriticeTransliterate = array('A','a','A','a','I','i',"S","s","T","t");
 		
