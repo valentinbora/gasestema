@@ -80,12 +80,24 @@ class CautaController extends Zend_Controller_Action {
     
     public function indexAction() {
     	
-        $searchQuery = trim($this->getRequest()->getParam('q'));
+        $diacriticeRaw=array("\xc4\x82","\xc4\x83","\xc3\x82","\xc3\xa2","\xc3\x8e","\xc3\xae","\xc8\x98","\xc8\x99","\xc8\x9a","\xc8\x9b");
+		$diacriticeTransliterate = array('A','a','A','a','I','i',"S","s","T","t");
+		
+		
+		$searchQuery = trim($this->getRequest()->getParam('q'));
         $pageNumber = (int) $this->getRequest()->getParam('page');
+		
+		//transliteratie
+		$searchQuery = str_replace($diacriticeRaw, $diacriticeTransliterate, $searchQuery);
+		// comasat spatii, transliteratie si sanitizare
 		$searchQuery = preg_replace('/\\s+/', " ", $searchQuery);//comasam spatiile
+		$searchQuery = str_replace("\\","",$searchQuery);
+		$searchQuery = preg_replace('/[^a-zA-z0-9-+ ]*/', "", $searchQuery);//sanitizam
+		
+		
         $words = preg_split('/(\s|,)/', $searchQuery);
 		//dd($words);
-        
+	         
         // get info
         $listaLocalitati = $this->_parseLocalitate($words);
         $ListaObiecte = $this->_cautaObiecteFullText($searchQuery);
