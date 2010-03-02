@@ -78,7 +78,7 @@ class CautaController extends Zend_Controller_Action {
     }
     
     public function indexAction() {
-    
+    	
         $searchQuery = trim($this->getRequest()->getParam('q'));
         $pageNumber = (int) $this->getRequest()->getParam('page');
 		$searchQuery = preg_replace('/\\s+/', " ", $searchQuery);//comasam spatiile
@@ -157,10 +157,14 @@ class CautaController extends Zend_Controller_Action {
 		$locatiiUnice =array();
 		foreach ($this->view->paginator as $obiect){
 			if (!isset($localitatiUnice[$obiect->localitate])){
-				$localitatiUnice[$obiect->localitate] = $obiect->Localitate->name; 
+				$localitatiUnice[$obiect->localitate] = array('name' => $obiect->Localitate->name,'nr'=>1); 
+			}else{
+				$localitatiUnice[$obiect->localitate]['nr']+=1;
 			}
 			if (!isset($locatiiUnice[$obiect->locatie])){
-				$locatiiUnice[$obiect->locatie] = $obiect->Locatie->nume; 
+				$locatiiUnice[$obiect->locatie] = array('name' => $obiect->Locatie->nume,'nr'=>1); 
+			}else {
+				$locatiiUnice[$obiect->locatie]['nr']+=1;
 			}
 		}
 		

@@ -3,20 +3,23 @@
 <?php if (count($this->paginator)): ?>
 
 <div id="leftBar">
-	
-	<ul id="cities">
-		<li class="first"><?php echo $this->translate('Cities');?></li>
-	    <?php foreach ($this->localitatiUnice as $localitate): ?>
-	        <li><a href="<?php echo $this->baseUrl('/cauta/?q='.ucwords($localitate));?>"><?php echo ucwords($localitate); ?></a></li>
-		<?php endforeach; ?>	
-	</ul>
+	<?php if (count($this->localitatiUnice)>1):?>
+		<ul id="cities">
+			<li class="first"><?php echo $this->translate('Cities');?></li>
+		    <?php foreach ($this->localitatiUnice as $id=>$localitate): ?>
+		        <li><a href="<?php echo $this->baseUrl('/cauta/?q='.$this->searchQuery.' in '.ucwords($localitate['name']));?>"><?php echo ucwords($localitate['name']); ?></a><?php //echo '<span>('.$localitate['nr'].')</span>';?></li>
+			<?php endforeach; ?>	
+		</ul>
+	<?php endif ?>
 
-	<ul id="places">
-		<li class="first"><?php echo $this->translate('Places');?></li>
-	    <?php foreach ($this->locatiiUnice as $id=>$locatie): ?>
-	        <li><a href="<?php echo $this->locationUrl($locatie,$id);?>"><?php echo ucwords($locatie); ?></a></li>
-		<?php endforeach; ?>	
-	</ul>
+	<?php if (count($this->locatiiUnice)>1):?>
+		<ul id="places">
+			<li class="first"><?php echo $this->translate('Places');?></li>
+		    <?php foreach ($this->locatiiUnice as $id=>$locatie): ?>
+		        <li><a href="<?php echo $this->locationUrl($locatie['name'],$id);?>"><?php echo ucwords($locatie['name']); ?></a><?php //echo '<span>('.$localitate['nr'].')</span>';?></li>
+			<?php endforeach; ?>	
+		</ul>
+	<?php endif ?>
 
 	
 </div>
