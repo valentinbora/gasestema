@@ -138,14 +138,18 @@ class CautaController extends Zend_Controller_Action {
             $listaNumeNormalizata[$id] = floor($obiect / $max * 100);
             
         }
-        asort($listaNume);
-        #print_r($listaNume);
+		
+        asort($listaNumeNormalizata);
+
+
+
         $listaIdNume = array_keys($listaNumeNormalizata);
+		
         $q = Doctrine_Query::create()
 					->select('o.localitate,o.locatie')
 					->from('Obiect o')
 					->where('o.nume in ("'.implode('","', $listaIdNume).'")')
-					->orderBy('FIELD(nume,"'.implode('","', $listaIdNume).'")');
+					->orderBy('FIELD(nume,"'.implode('","', $listaIdNume).'") DESC');
 					
         //print $q->getSqlQuery();
         if (count($listaLocalitati) > 0) {
