@@ -1,6 +1,7 @@
 <?php 
 class CautaController extends Zend_Controller_Action {
-    private $searchType = "IN NATURAL LANGUAGE MODE";
+    //private $searchType = "IN NATURAL LANGUAGE MODE";
+      private $searchType = "";
     //private $searchType = "IN BOOLEAN MODE";
     //private $searchType = "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION";
     //private $searchType = "WITH QUERY EXPANSION";
