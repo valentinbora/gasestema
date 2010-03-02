@@ -79,10 +79,11 @@ class CautaController extends Zend_Controller_Action {
     
     public function indexAction() {
     
-        $searchQuery = $this->getRequest()->getParam('q');
+        $searchQuery = trim($this->getRequest()->getParam('q'));
         $pageNumber = (int) $this->getRequest()->getParam('page');
-        $words = preg_split('/(\s)/', $searchQuery);
-
+		$searchQuery = preg_replace('/\\s+/', " ", $searchQuery);//comasam spatiile
+        $words = preg_split('/(\s|,)/', $searchQuery);
+		//dd($words);
         
         // get info
         $listaLocalitati = $this->_parseLocalitate($words);
@@ -159,10 +160,12 @@ class CautaController extends Zend_Controller_Action {
 				$localitatiUnice[$obiect->localitate] = $obiect->Localitate->name; 
 			}
 			if (!isset($locatiiUnice[$obiect->locatie])){
-				$locatiiUnice[$obiect->locatie] = $obiect->locatie->nume; 
+				$locatiiUnice[$obiect->locatie] = $obiect->Locatie->nume; 
 			}
 		}
 		
+		$this->view->localitatiUnice = $localitatiUnice;
+		$this->view->locatiiUnice = $locatiiUnice;
 		
 		
     }

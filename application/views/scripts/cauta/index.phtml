@@ -1,5 +1,25 @@
+
+
 <?php if (count($this->paginator)): ?>
 
+<div id="leftBar">
+	
+	<ul id="cities">
+		<li class="first"><?php echo $this->translate('Cities');?></li>
+	    <?php foreach ($this->localitatiUnice as $localitate): ?>
+	        <li><a href="<?php echo $this->baseUrl('/cauta/?q='.ucwords($localitate));?>"><?php echo ucwords($localitate); ?></a></li>
+		<?php endforeach; ?>	
+	</ul>
+
+	<ul id="places">
+		<li class="first"><?php echo $this->translate('Places');?></li>
+	    <?php foreach ($this->locatiiUnice as $id=>$locatie): ?>
+	        <li><a href="<?php echo $this->locationUrl($locatie,$id);?>"><?php echo ucwords($locatie); ?></a></li>
+		<?php endforeach; ?>	
+	</ul>
+
+	
+</div>
 <div id="informationBar">
 	<div id="results"> 
 	<?php echo $this->translate('Results'); ?>

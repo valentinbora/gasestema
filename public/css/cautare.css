@@ -93,3 +93,26 @@
 	font-size:0.85em;
 	margin-top:0.1em;
 }
+#leftBar{
+	border:1px solid red;
+	height:200px;
+	width:130px;
+	margin-left:-150px;
+	float:left;
+}
+#cities,#places{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+	margin-top:20px;
+}
+#cities li ,#places li{
+	margin:0px;
+	padding:0px;
+	margin-left:20px;
+}
+#cities .first ,#places .first{
+	font-weight:bold;
+	margin-left:10px;
+}
+
