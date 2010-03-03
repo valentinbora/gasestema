@@ -1,5 +1,5 @@
 Cufon('h2, .locatie label, legend', {hover:'true'});
-
+//a={,'â','Â','î','Î','ș','Ș','ț','Ț'}
 $(function(){
 	$("a.login").click(function(){
 		$(".login-dropdown").fadeIn();

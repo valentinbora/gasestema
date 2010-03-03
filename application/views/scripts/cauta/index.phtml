@@ -73,6 +73,13 @@
 					<?php echo $this->cautareHighlight($this->searchWords,ucwords($obiect->Localitate->name));?>
 				</a>
 			</div>
+			<div class="place">
+				<?php echo $this->translate('at');?>
+				<a href="<?php echo $this->locationUrl($this->locatiiUnice[$obiect->locatie]['name'],$obiect->locatie)?>">	
+					<?php echo $this->locatiiUnice[$obiect->locatie]['name'];?>
+				</a>
+			</div>
+			
 			
         </li>
     <?php endforeach; ?>

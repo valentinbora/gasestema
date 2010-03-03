@@ -92,6 +92,13 @@
 .city{
 	font-size:0.85em;
 	margin-top:0.1em;
+	display:inline;
+
+}
+.place{
+	font-size:0.8em;
+	display:inline;
+	
 }
 #leftBar{
 	margin-top:10px;
