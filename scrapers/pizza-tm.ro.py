@@ -1,5 +1,5 @@
-import mechanize
-from mechanize import Browser
+#import mechanize
+#from mechanize import Browser
 import urllib2
 from urllib2 import URLError
 from lxml import etree
@@ -11,8 +11,8 @@ import sys
 import MySQLdb
 link = MySQLdb.connect (host = "localhost",
                            user = "gasestema",
-                           passwd = "gasestema",
-                           db = "gasestema",
+                           passwd = "anaaregasestema",
+                           db = "gasestema_test",
                            charset = "utf8",
                            use_unicode = True
                            )     
