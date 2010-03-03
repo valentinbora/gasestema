@@ -2,7 +2,7 @@
 class CautaController extends Zend_Controller_Action {
     //private $searchType = "IN NATURAL LANGUAGE MODE";
       private $searchType = "";
-	  private $alternateSearchType = "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION";
+      private $alternateSearchType = "  WITH QUERY EXPANSION";
 	  
     //private $searchType = "IN BOOLEAN MODE";
     //private $searchType = "IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION";
@@ -82,15 +82,36 @@ class CautaController extends Zend_Controller_Action {
     
     public function indexAction() {
 		//http://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024    	
-        $diacriticeRaw=array("\xc4\x82","\xc4\x83","\xc3\x82","\xc3\xa2","\xc3\x8e","\xc3\xae","\xc8\x98","\xc8\x99","\xc8\x9a","\xc8\x9b");
-		$diacriticeTransliterate = array('A','a','A','a','I','i',"S","s","T","t");
 		
+		$translit = array(
+			"\xc4\x82" => "A",
+			"\xc4\x83" => "a",
+			"\xc3\x82" => "A",
+			"\xc3\xa2" => "a",
+			"\xc3\x8e" => "I",
+			"\xc3\xae" => "i",
+			"\xc8\x98" => "S",
+			"\xc8\x99" => "s",
+			"\xc8\x9a" => "T",
+			"\xc8\x9b" => "t",
+
+			"\xc5\x9e" => "S",
+			"\xc5\x9f" => "s",
+			"\xc5\xa2" => "T",
+			"\xc5\xa3" => "t",
+			
+			);
+
+
 		
 		$searchQuery = trim($this->getRequest()->getParam('q'));
-        $pageNumber = (int) $this->getRequest()->getParam('page');
+        	$pageNumber = (int) $this->getRequest()->getParam('page');
 		
 		//transliteratie
-		$searchQuery = str_replace($diacriticeRaw, $diacriticeTransliterate, $searchQuery);
+		foreach($translit as $k=>$v) {
+	        	$searchQuery = mb_eregi_replace($k,$v,$searchQuery);
+		    }
+    
 		// comasat spatii, transliteratie si sanitizare
 		$searchQuery = preg_replace('/\\s+/', " ", $searchQuery);//comasam spatiile
 		$searchQuery = str_replace("\\","",$searchQuery);
